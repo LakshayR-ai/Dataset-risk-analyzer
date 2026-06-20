@@ -41,7 +41,11 @@ from scipy import stats as scipy_stats
 app = Flask(__name__)
 CORS(
     app,
-    resources={r"/api/*": {"origins": ["http://localhost:3000", "http://127.0.0.1:3000", "null"]}},
+    resources={r"/api/*": {"origins": [
+        "http://localhost:3000", "http://127.0.0.1:3000",
+        "http://localhost:8080", "http://127.0.0.1:8080",
+        "null",
+    ]}},
 )
 
 UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), "uploads")
@@ -634,4 +638,6 @@ def health():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    # FLASK_DEBUG=0 is set by start.py to disable the reloader (prevents fork conflicts)
+    debug_mode = os.environ.get("FLASK_DEBUG", "1") != "0"
+    app.run(debug=debug_mode, port=5000, use_reloader=debug_mode)
