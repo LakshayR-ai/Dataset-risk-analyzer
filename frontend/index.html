@@ -13,26 +13,15 @@
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --primary: #6366f1;
-  --primary-dark: #4f46e5;
-  --primary-light: #e0e7ff;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
-  --info: #3b82f6;
-  --bg: #f8fafc;
-  --bg-dark: #0f172a;
-  --surface: #ffffff;
-  --surface-dark: #1e293b;
-  --border: #e2e8f0;
-  --border-dark: #334155;
-  --text: #0f172a;
-  --text-muted: #64748b;
-  --text-dark: #f1f5f9;
-  --text-muted-dark: #94a3b8;
-  --sidebar-w: 260px;
-  --radius: 12px;
-  --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
+  --primary: #6366f1; --primary-dark: #4f46e5; --primary-light: #e0e7ff;
+  --success: #10b981; --warning: #f59e0b; --danger: #ef4444; --info: #3b82f6;
+  --bg: #f8fafc; --bg-dark: #0f172a;
+  --surface: #ffffff; --surface-dark: #1e293b;
+  --border: #e2e8f0; --border-dark: #334155;
+  --text: #0f172a; --text-muted: #64748b;
+  --text-dark: #f1f5f9; --text-muted-dark: #94a3b8;
+  --sidebar-w: 260px; --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);
   --shadow-lg: 0 10px 40px rgba(0,0,0,.12);
 }
 body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); transition: background .3s, color .3s; }
@@ -49,8 +38,7 @@ body.dark .sidebar { background: var(--surface-dark); border-color: var(--border
 .sidebar-logo { padding: 24px 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border); }
 body.dark .sidebar-logo { border-color: var(--border-dark); }
 .sidebar-logo .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
-.sidebar-logo span { font-weight: 700; font-size: 15px; color: var(--text); }
-body.dark .sidebar-logo span { color: var(--text-dark); }
+.sidebar-logo span { font-weight: 700; font-size: 15px; }
 .sidebar-nav { flex: 1; padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; overflow-y: auto; }
 .nav-item {
   display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px;
@@ -85,7 +73,8 @@ body.dark .topbar { background: var(--surface-dark); border-color: var(--border-
 .btn-ghost:hover { background: var(--bg); }
 body.dark .btn-ghost { color: var(--text-muted-dark); border-color: var(--border-dark); }
 body.dark .btn-ghost:hover { background: rgba(255,255,255,.05); }
-.btn-danger { background: var(--danger); color: white; }
+.btn-success { background: var(--success); color: white; }
+.btn-success:hover { background: #059669; }
 .btn-sm { padding: 6px 14px; font-size: 13px; }
 .btn-lg { padding: 14px 28px; font-size: 16px; border-radius: 10px; }
 .btn:disabled { opacity: .5; cursor: not-allowed; transform: none !important; }
@@ -109,10 +98,10 @@ body.dark .stat-card { background: var(--surface-dark); border-color: var(--bord
 .stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
 .stat-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
 .stat-icon.purple { background: rgba(99,102,241,.12); }
-.stat-icon.green { background: rgba(16,185,129,.12); }
+.stat-icon.green  { background: rgba(16,185,129,.12); }
 .stat-icon.yellow { background: rgba(245,158,11,.12); }
-.stat-icon.red { background: rgba(239,68,68,.12); }
-.stat-icon.blue { background: rgba(59,130,246,.12); }
+.stat-icon.red    { background: rgba(239,68,68,.12); }
+.stat-icon.blue   { background: rgba(59,130,246,.12); }
 .stat-value { font-size: 26px; font-weight: 800; line-height: 1; }
 .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
 body.dark .stat-label { color: var(--text-muted-dark); }
@@ -129,7 +118,8 @@ body.dark .stat-label { color: var(--text-muted-dark); }
 body.dark .form-input { background: var(--surface-dark); border-color: var(--border-dark); color: var(--text-dark); }
 body.dark .form-input:focus { border-color: #818cf8; }
 .form-error { font-size: 12px; color: var(--danger); margin-top: 5px; }
-.form-hint { font-size: 12px; color: var(--text-muted); margin-top: 5px; }
+.form-hint { font-size: 12px; color: var(--text-muted); margin-top: 5px; line-height: 1.5; }
+body.dark .form-hint { color: var(--text-muted-dark); }
 
 /* ===== UPLOAD ZONE ===== */
 .upload-zone {
@@ -146,6 +136,8 @@ body.dark .upload-subtitle { color: var(--text-muted-dark); }
 .upload-file-info { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--primary-light); border-radius: 8px; margin-top: 16px; }
 body.dark .upload-file-info { background: rgba(99,102,241,.15); }
 .upload-file-name { font-size: 14px; font-weight: 600; color: var(--primary); flex: 1; }
+.zip-indicator { background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.3); color: #d97706; border-radius: 8px; padding: 10px 14px; margin-top: 12px; font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+body.dark .zip-indicator { background: rgba(245,158,11,.15); color: #fbbf24; }
 .progress-bar-wrap { background: var(--border); border-radius: 99px; height: 8px; overflow: hidden; margin-top: 12px; }
 body.dark .progress-bar-wrap { background: var(--border-dark); }
 .progress-bar { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-dark)); border-radius: 99px; transition: width .4s ease; }
@@ -154,14 +146,14 @@ body.dark .progress-bar-wrap { background: var(--border-dark); }
 .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 99px; font-size: 12px; font-weight: 600; }
 .badge-success { background: rgba(16,185,129,.12); color: #059669; }
 .badge-warning { background: rgba(245,158,11,.12); color: #d97706; }
-.badge-danger { background: rgba(239,68,68,.12); color: #dc2626; }
-.badge-info { background: rgba(59,130,246,.12); color: #2563eb; }
-.badge-purple { background: rgba(99,102,241,.12); color: var(--primary); }
-body.dark .badge-success { background: rgba(16,185,129,.2); color: #34d399; }
-body.dark .badge-warning { background: rgba(245,158,11,.2); color: #fbbf24; }
-body.dark .badge-danger { background: rgba(239,68,68,.2); color: #f87171; }
-body.dark .badge-info { background: rgba(59,130,246,.2); color: #60a5fa; }
-body.dark .badge-purple { background: rgba(99,102,241,.2); color: #a5b4fc; }
+.badge-danger  { background: rgba(239,68,68,.12);  color: #dc2626; }
+.badge-info    { background: rgba(59,130,246,.12);  color: #2563eb; }
+.badge-purple  { background: rgba(99,102,241,.12);  color: var(--primary); }
+body.dark .badge-success { background: rgba(16,185,129,.2);  color: #34d399; }
+body.dark .badge-warning { background: rgba(245,158,11,.2);  color: #fbbf24; }
+body.dark .badge-danger  { background: rgba(239,68,68,.2);   color: #f87171; }
+body.dark .badge-info    { background: rgba(59,130,246,.2);  color: #60a5fa; }
+body.dark .badge-purple  { background: rgba(99,102,241,.2);  color: #a5b4fc; }
 
 /* ===== TABLE ===== */
 .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
@@ -176,6 +168,8 @@ body.dark td { border-color: var(--border-dark); }
 tr:last-child td { border-bottom: none; }
 tbody tr:hover { background: var(--bg); }
 body.dark tbody tr:hover { background: rgba(255,255,255,.03); }
+.highlight-row td { background: rgba(239,68,68,.05) !important; }
+body.dark .highlight-row td { background: rgba(239,68,68,.1) !important; }
 
 /* ===== AUTH PAGES ===== */
 .auth-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; }
@@ -186,10 +180,6 @@ body.dark .auth-card { background: var(--surface-dark); }
 .auth-logo h1 { font-size: 22px; font-weight: 800; }
 .auth-logo p { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
 body.dark .auth-logo p { color: var(--text-muted-dark); }
-.auth-divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: var(--text-muted); font-size: 13px; }
-.auth-divider::before, .auth-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-body.dark .auth-divider { color: var(--text-muted-dark); }
-body.dark .auth-divider::before, body.dark .auth-divider::after { background: var(--border-dark); }
 .auth-switch { text-align: center; margin-top: 20px; font-size: 14px; color: var(--text-muted); }
 body.dark .auth-switch { color: var(--text-muted-dark); }
 .auth-switch a { color: var(--primary); font-weight: 600; cursor: pointer; text-decoration: none; }
@@ -220,39 +210,76 @@ body.dark .feature-card p { color: var(--text-muted-dark); }
 
 /* ===== SCORE RING ===== */
 .score-ring-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.score-ring { position: relative; width: 120px; height: 120px; }
-.score-ring svg { transform: rotate(-90deg); }
+.score-ring { position: relative; }
+.score-ring svg { transform: rotate(-90deg); display: block; }
 .score-ring-text { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .score-ring-text .score-num { font-size: 26px; font-weight: 800; }
 .score-ring-text .score-lbl { font-size: 11px; color: var(--text-muted); font-weight: 500; }
 body.dark .score-ring-text .score-lbl { color: var(--text-muted-dark); }
+
+/* ===== TOAST ===== */
+.toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+.toast { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 10px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-lg); font-size: 14px; font-weight: 500; min-width: 280px; max-width: 380px; animation: slideUp .3s ease; }
+body.dark .toast { background: var(--surface-dark); border-color: var(--border-dark); }
+.toast-success { border-left: 4px solid var(--success); }
+.toast-error   { border-left: 4px solid var(--danger); }
+.toast-info    { border-left: 4px solid var(--info); }
+.toast-warning { border-left: 4px solid var(--warning); }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== COLLAPSIBLE SECTION ===== */
+.collapsible-header { display: flex; align-items: center; justify-content: space-between; cursor: pointer; padding: 14px 16px; border-radius: 8px; background: var(--bg); font-weight: 600; font-size: 14px; transition: background .2s; user-select: none; }
+.collapsible-header:hover { background: var(--border); }
+body.dark .collapsible-header { background: rgba(255,255,255,.04); }
+body.dark .collapsible-header:hover { background: rgba(255,255,255,.08); }
+.collapsible-body { padding: 0 4px; margin-top: 12px; }
+
+/* ===== TABS ===== */
+.tab-bar { display: flex; gap: 4px; flex-wrap: wrap; border-bottom: 2px solid var(--border); margin-bottom: 20px; }
+body.dark .tab-bar { border-color: var(--border-dark); }
+.tab-btn { padding: 8px 16px; border: none; background: none; cursor: pointer; font-size: 13px; font-weight: 500; color: var(--text-muted); border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all .2s; border-radius: 6px 6px 0 0; }
+.tab-btn:hover { color: var(--primary); background: var(--primary-light); }
+.tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); font-weight: 700; }
+body.dark .tab-btn { color: var(--text-muted-dark); }
+body.dark .tab-btn:hover, body.dark .tab-btn.active { color: #a5b4fc; background: rgba(99,102,241,.1); }
+body.dark .tab-btn.active { border-bottom-color: #818cf8; }
+
+/* ===== CORRELATION HEATMAP ===== */
+.heatmap-wrap { overflow-x: auto; }
+.heatmap-table { border-collapse: collapse; font-size: 11px; }
+.heatmap-table th { padding: 6px 10px; font-size: 11px; font-weight: 600; color: var(--text-muted); text-align: center; white-space: nowrap; max-width: 80px; overflow: hidden; text-overflow: ellipsis; }
+.heatmap-table td { padding: 0; width: 60px; height: 44px; text-align: center; font-size: 11px; font-weight: 600; cursor: default; }
+.heatmap-table td span { display: block; padding: 4px; }
+
+/* ===== RECOMMENDATION CARDS ===== */
+.rec-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; margin-bottom: 14px; transition: border .2s; }
+body.dark .rec-card { border-color: var(--border-dark); }
+.rec-card:hover { border-color: var(--primary); }
+.rec-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; gap: 12px; }
+.rec-card-title { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; }
+.rec-card-body { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+body.dark .rec-card-body { color: var(--text-muted-dark); }
+.rec-card-body b { color: var(--text); font-weight: 600; }
+body.dark .rec-card-body b { color: var(--text-dark); }
+.rec-fix { font-family: 'Courier New', monospace; font-size: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; margin-top: 8px; white-space: pre-wrap; word-break: break-all; line-height: 1.6; }
+body.dark .rec-fix { background: rgba(0,0,0,.3); border-color: var(--border-dark); color: #a5b4fc; }
 
 /* ===== SKELETON ===== */
 .skeleton { background: linear-gradient(90deg, var(--border) 25%, #f1f5f9 50%, var(--border) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 6px; }
 body.dark .skeleton { background: linear-gradient(90deg, var(--border-dark) 25%, rgba(255,255,255,.08) 50%, var(--border-dark) 75%); background-size: 200% 100%; }
 @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-/* ===== TOAST ===== */
-.toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
-.toast { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 10px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-lg); font-size: 14px; font-weight: 500; min-width: 280px; animation: slideUp .3s ease; }
-body.dark .toast { background: var(--surface-dark); border-color: var(--border-dark); }
-.toast-success { border-left: 4px solid var(--success); }
-.toast-error { border-left: 4px solid var(--danger); }
-.toast-info { border-left: 4px solid var(--info); }
-@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
 /* ===== MISC ===== */
 .section-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
 .section-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
 body.dark .section-subtitle { color: var(--text-muted-dark); }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.flex { display: flex; }
-.flex-center { display: flex; align-items: center; justify-content: center; }
-.gap-2 { gap: 8px; }
-.gap-3 { gap: 12px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
 .mt-4 { margin-top: 16px; }
 .mt-6 { margin-top: 24px; }
+.mb-4 { margin-bottom: 16px; }
+.mb-6 { margin-bottom: 24px; }
 .text-muted { color: var(--text-muted); }
 body.dark .text-muted { color: var(--text-muted-dark); }
 .text-sm { font-size: 13px; }
@@ -265,14 +292,10 @@ body.dark .empty-state { color: var(--text-muted-dark); }
 .empty-state .empty-icon { font-size: 48px; margin-bottom: 12px; }
 .empty-state h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
 body.dark .empty-state h3 { color: var(--text-dark); }
-.recommendation-item { display: flex; gap: 12px; padding: 14px; background: var(--bg); border-radius: 8px; margin-bottom: 10px; }
-body.dark .recommendation-item { background: rgba(255,255,255,.04); }
-.rec-icon { font-size: 20px; flex-shrink: 0; }
-.rec-text { font-size: 14px; line-height: 1.5; }
-.rec-text strong { display: block; font-weight: 600; margin-bottom: 2px; }
-.highlight-row { background: rgba(239,68,68,.06) !important; }
-body.dark .highlight-row { background: rgba(239,68,68,.1) !important; }
-.chart-container { position: relative; height: 260px; }
+.chart-container { position: relative; height: 240px; }
+.chart-container-sm { position: relative; height: 180px; }
+.distributions-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.menu-btn { display: none; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
@@ -282,67 +305,36 @@ body.dark .highlight-row { background: rgba(239,68,68,.1) !important; }
   .landing-nav { padding: 16px 24px; }
   .hero { padding: 60px 24px 40px; }
   .features-grid { padding: 24px; }
-  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .page-content { padding: 16px; }
+  .menu-btn { display: flex !important; }
 }
 @media (max-width: 600px) {
   .stat-grid { grid-template-columns: 1fr 1fr; }
   .hero-actions { flex-direction: column; align-items: center; }
+  .distributions-grid { grid-template-columns: 1fr; }
 }
 
-/* ===== MOBILE MENU BUTTON ===== */
-.menu-btn { display: none; }
-@media (max-width: 900px) {
-  .menu-btn { display: flex !important; }
-}
+/* ===== PRINT ===== */
 @media print {
-  .sidebar, .topbar, .btn, .upload-zone { display: none !important; }
-  .main-content { margin-left: 0 !important; }
-}
-
-/* ===== SCORE BREAKDOWN BAR ===== */
-.score-bar-label { font-size: 12px; color: var(--text-muted); margin-bottom: 3px; display: flex; justify-content: space-between; }
-body.dark .score-bar-label { color: var(--text-muted-dark); }
-
-/* ===== RECOMMENDATION PRIORITY ===== */
-.recommendation-item { display: flex; gap: 12px; padding: 14px; background: var(--bg); border-radius: 8px; margin-bottom: 10px; align-items: flex-start; }
-body.dark .recommendation-item { background: rgba(255,255,255,.04); }
-
-/* ===== ADVANCED METRICS BLOCK ===== */
-.metrics-block { padding: 14px; background: var(--bg); border-radius: 8px; }
-body.dark .metrics-block { background: rgba(255,255,255,.04); }
-
-/* ===== DONUT CHART ===== */
-.chart-container-sm { position: relative; height: 180px; }
-
-/* ===== TOAST WARNING TYPE ===== */
-.toast-warning { border-left: 4px solid var(--warning); }
-
-/* ===== HISTORY TABLE IMPROVEMENTS ===== */
-tbody tr:hover td { background: transparent; }
-
-/* ===== DOWNLOAD BUTTON ===== */
-.btn-download { background: var(--success); color: white; }
-.btn-download:hover { background: #059669; }
-
-/* ===== PRINT STYLES ===== */
-@media print {
-  .sidebar, .topbar, .btn, .upload-zone, .toast-container { display: none !important; }
+  .sidebar, .topbar, .btn, .upload-zone, .toast-container, .menu-btn { display: none !important; }
   .main-content { margin-left: 0 !important; }
   .card { break-inside: avoid; box-shadow: none !important; border: 1px solid #ccc !important; }
+  body { background: white !important; color: black !important; }
 }
   </style>
 </head>
 <body>
   <div id="root"></div>
   <script type="text/babel">
+
 // ============================================================
-// Dataset Quality Analyzer — React SPA  (v2)
+// DataQA — Dataset Risk Analyzer SPA  (v3)
 // ============================================================
 const { useState, useEffect, useRef, useCallback, createContext, useContext } = React;
 
 // ============================================================
-// CONTEXT
+// APP CONTEXT
 // ============================================================
 const AppContext = createContext(null);
 
@@ -371,7 +363,7 @@ function AppProvider({ children }) {
   }, []);
 
   const toast = useCallback((msg, type = 'info') => {
-    const id = Date.now();
+    const id = Date.now() + Math.random();
     setToasts(t => [...t, { id, msg, type }]);
     setTimeout(() => setToasts(t => t.filter(x => x.id !== id)), 4000);
   }, []);
@@ -402,7 +394,7 @@ function ToastContainer({ toasts }) {
 }
 
 // ============================================================
-// SCORE RING
+// SCORE RING (SVG)
 // ============================================================
 function ScoreRing({ score, size = 120 }) {
   const r = 46, cx = 60, cy = 60;
@@ -425,28 +417,291 @@ function ScoreRing({ score, size = 120 }) {
         </div>
       </div>
       <span style={{ fontSize: 13, fontWeight: 600, color }}>
-        {pct >= 75 ? 'Good Quality' : pct >= 50 ? 'Fair Quality' : 'Poor Quality'}
+        {pct >= 90 ? 'Excellent' : pct >= 70 ? 'Good' : pct >= 50 ? 'Needs Cleaning' : 'High Risk'}
       </span>
     </div>
   );
 }
 
 // ============================================================
-// MINI SCORE BAR  (for score breakdown)
+// SCORE BAR
 // ============================================================
 function ScoreBar({ label, value, max, color }) {
-  const pct = Math.min((value / max) * 100, 100);
+  const pct = Math.min(((value || 0) / max) * 100, 100);
   return (
-    <div style={{ marginBottom: 10 }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, marginBottom: 3 }}>
+    <div style={{ marginBottom: 12 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 4 }}>
         <span style={{ color: 'var(--text-muted)' }}>{label}</span>
-        <span style={{ fontWeight: 700 }}>{value}/{max}</span>
+        <span style={{ fontWeight: 700 }}>{value || 0}/{max}</span>
       </div>
-      <div style={{ height: 6, borderRadius: 99, background: 'var(--border)', overflow: 'hidden' }}>
+      <div style={{ height: 8, borderRadius: 99, background: 'var(--border)', overflow: 'hidden' }}>
         <div style={{ height: '100%', width: `${pct}%`, background: color, borderRadius: 99, transition: 'width 1s ease' }} />
       </div>
     </div>
   );
+}
+
+// ============================================================
+// BAR CHART (Chart.js)
+// ============================================================
+function BarChart({ labels, values, color = '#6366f1', title }) {
+  const canvasRef = useRef(null);
+  const chartRef = useRef(null);
+  const labelsKey = JSON.stringify(labels);
+
+  useEffect(() => {
+    if (!canvasRef.current) return;
+    if (chartRef.current) { chartRef.current.destroy(); chartRef.current = null; }
+    const ctx = canvasRef.current.getContext('2d');
+    chartRef.current = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels || [],
+        datasets: [{ data: values || [], backgroundColor: color + 'cc', borderColor: color, borderWidth: 1, borderRadius: 4 }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y}` } } },
+        scales: {
+          x: { grid: { display: false }, ticks: { font: { size: 10 }, maxRotation: 45 } },
+          y: { grid: { color: 'rgba(0,0,0,.06)' }, ticks: { font: { size: 10 } }, beginAtZero: true }
+        }
+      }
+    });
+    return () => { if (chartRef.current) { chartRef.current.destroy(); chartRef.current = null; } };
+  }, [labelsKey, color]);
+
+  return (
+    <div>
+      {title && <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8, color: 'var(--text-muted)' }}>{title}</div>}
+      <div className="chart-container"><canvas ref={canvasRef} /></div>
+    </div>
+  );
+}
+
+// ============================================================
+// DONUT CHART (Chart.js)
+// ============================================================
+function DonutChart({ labels, values, colors }) {
+  const canvasRef = useRef(null);
+  const chartRef = useRef(null);
+  const labelsKey = JSON.stringify(labels);
+
+  useEffect(() => {
+    if (!canvasRef.current) return;
+    if (chartRef.current) { chartRef.current.destroy(); chartRef.current = null; }
+    const ctx = canvasRef.current.getContext('2d');
+    chartRef.current = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: labels || [],
+        datasets: [{ data: values || [], backgroundColor: colors || ['#6366f1','#10b981','#f59e0b','#ef4444'], borderWidth: 2 }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, padding: 12 } } },
+        cutout: '60%'
+      }
+    });
+    return () => { if (chartRef.current) { chartRef.current.destroy(); chartRef.current = null; } };
+  }, [labelsKey]);
+
+  return <div className="chart-container-sm"><canvas ref={canvasRef} /></div>;
+}
+
+// ============================================================
+// CORRELATION HEATMAP (HTML table — NOT Chart.js)
+// ============================================================
+function CorrelationHeatmap({ cols, matrix }) {
+  if (!cols || cols.length < 2 || !matrix) return null;
+
+  function cellColor(val) {
+    if (val === null || val === undefined) return 'rgba(128,128,128,.1)';
+    const v = parseFloat(val);
+    if (isNaN(v)) return 'rgba(128,128,128,.1)';
+    const abs = Math.abs(v);
+    if (v === 1.0) return 'rgba(79,70,229,0.85)';
+    if (v >= 0) {
+      if (abs >= 0.9) return `rgba(239,68,68,${0.3 + abs * 0.6})`;
+      if (abs >= 0.7) return `rgba(245,158,11,${0.2 + abs * 0.6})`;
+      if (abs >= 0.5) return `rgba(234,179,8,${0.15 + abs * 0.5})`;
+      return `rgba(99,102,241,${0.05 + abs * 0.2})`;
+    } else {
+      if (abs >= 0.7) return `rgba(59,130,246,${0.2 + abs * 0.6})`;
+      if (abs >= 0.4) return `rgba(96,165,250,${0.15 + abs * 0.5})`;
+      return `rgba(147,197,253,${0.1 + abs * 0.3})`;
+    }
+  }
+
+  function cellTextColor(val) {
+    if (val === null || val === undefined) return 'var(--text-muted)';
+    const abs = Math.abs(parseFloat(val));
+    return abs >= 0.5 ? '#fff' : 'var(--text)';
+  }
+
+  return (
+    <div className="heatmap-wrap">
+      <table className="heatmap-table">
+        <thead>
+          <tr>
+            <th style={{ minWidth: 70 }}></th>
+            {cols.map((c, i) => (
+              <th key={i} title={c} style={{ minWidth: 60, maxWidth: 80, overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                {c.length > 8 ? c.slice(0, 8) + '…' : c}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {matrix.map((row, ri) => (
+            <tr key={ri}>
+              <th style={{ textAlign: 'right', paddingRight: 10, fontWeight: 600, fontSize: 11 }} title={cols[ri]}>
+                {cols[ri].length > 8 ? cols[ri].slice(0, 8) + '…' : cols[ri]}
+              </th>
+              {row.map((val, ci) => (
+                <td key={ci} style={{ backgroundColor: cellColor(val), color: cellTextColor(val) }}>
+                  <span>{val !== null && val !== undefined ? parseFloat(val).toFixed(2) : '—'}</span>
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginTop: 12, fontSize: 11, color: 'var(--text-muted)' }}>
+        <span><span style={{ display: 'inline-block', width: 12, height: 12, borderRadius: 2, background: 'rgba(239,68,68,.8)', marginRight: 4, verticalAlign: 'middle' }}></span>Strong positive ≥0.9</span>
+        <span><span style={{ display: 'inline-block', width: 12, height: 12, borderRadius: 2, background: 'rgba(245,158,11,.8)', marginRight: 4, verticalAlign: 'middle' }}></span>Moderate 0.7–0.9</span>
+        <span><span style={{ display: 'inline-block', width: 12, height: 12, borderRadius: 2, background: 'rgba(59,130,246,.7)', marginRight: 4, verticalAlign: 'middle' }}></span>Negative</span>
+        <span><span style={{ display: 'inline-block', width: 12, height: 12, borderRadius: 2, background: 'rgba(79,70,229,.85)', marginRight: 4, verticalAlign: 'middle' }}></span>Self (1.0)</span>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
+// GRADE BADGE HELPER
+// ============================================================
+function GradeBadge({ grade }) {
+  const map = {
+    'Excellent':      'badge-success',
+    'Good':           'badge-info',
+    'Needs Cleaning': 'badge-warning',
+    'High Risk':      'badge-danger',
+  };
+  return <span className={`badge ${map[grade] || 'badge-purple'}`}>{grade || '—'}</span>;
+}
+
+function RiskBadge({ risk }) {
+  const map = { CRITICAL: 'badge-danger', HIGH: 'badge-danger', MEDIUM: 'badge-warning', LOW: 'badge-success' };
+  return <span className={`badge ${map[risk] || 'badge-purple'}`}>{risk || '—'}</span>;
+}
+
+function PriorityBadge({ priority }) {
+  const map = { HIGH: 'badge-danger', MEDIUM: 'badge-warning', LOW: 'badge-success' };
+  return <span className={`badge ${map[(priority||'').toUpperCase()] || 'badge-purple'}`}>{priority || '—'}</span>;
+}
+
+// ============================================================
+// COLLAPSIBLE SECTION
+// ============================================================
+function Collapsible({ title, badge, children, defaultOpen = false }) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <div style={{ marginBottom: 12 }}>
+      <div className="collapsible-header" onClick={() => setOpen(o => !o)}>
+        <span>{title} {badge && <span style={{ marginLeft: 8 }}>{badge}</span>}</span>
+        <span style={{ fontSize: 16, transition: 'transform .2s', display: 'inline-block', transform: open ? 'rotate(180deg)' : 'none' }}>▼</span>
+      </div>
+      {open && <div className="collapsible-body">{children}</div>}
+    </div>
+  );
+}
+
+// ============================================================
+// MOCK REPORT GENERATOR (offline demo)
+// ============================================================
+function generateMockReport(filename) {
+  return {
+    filename,
+    target_used: null,
+    suggested_targets: [
+      { column: 'Rating', confidence: 0.9, unique_values: 5, dtype: 'object' },
+      { column: 'Purchased', confidence: 0.75, unique_values: 2, dtype: 'int64' },
+      { column: 'Category', confidence: 0.6, unique_values: 8, dtype: 'object' },
+    ],
+    profile: {
+      overview: {
+        rows: 1200, columns: 9, memory_mb: 0.6, numeric_cols: 5, categorical_cols: 3,
+        datetime_cols: 1, duplicate_rows: 30, duplicate_pct: 2.5, missing_cells: 148,
+        missing_pct: 1.37, complete_rows: 1020, complete_rows_pct: 85.0,
+      },
+      columns: [
+        { name: 'Age', dtype_class: 'numeric', dtype_raw: 'float64', missing: 12, missing_pct: 1.0, unique: 47, outliers_iqr: 8, outliers_zscore: 3, skewness: 0.72, is_constant: false, is_id_like: false, suggested_dtype: '', mean: 34.2, median: 33, std: 11.4, min: 18, max: 75 },
+        { name: 'Salary', dtype_class: 'numeric', dtype_raw: 'float64', missing: 25, missing_pct: 2.1, unique: 320, outliers_iqr: 22, outliers_zscore: 9, skewness: 2.4, is_constant: false, is_id_like: false, suggested_dtype: '', mean: 52000, median: 45000, std: 28000, min: 0, max: 250000 },
+        { name: 'Rating', dtype_class: 'categorical', dtype_raw: 'object', missing: 5, missing_pct: 0.4, unique: 5, outliers_iqr: 0, outliers_zscore: 0, skewness: null, is_constant: false, is_id_like: false, suggested_dtype: '', top_value: '4', top_freq: 380, top_freq_pct: 31.7 },
+        { name: 'Product Price', dtype_class: 'numeric', dtype_raw: 'float64', missing: 0, missing_pct: 0, unique: 280, outliers_iqr: 15, outliers_zscore: 6, skewness: 1.8, is_constant: false, is_id_like: false, suggested_dtype: '', mean: 450, median: 320, std: 310, min: 9.99, max: 2499 },
+        { name: 'JoinDate', dtype_class: 'categorical', dtype_raw: 'object', missing: 0, missing_pct: 0, unique: 980, outliers_iqr: 0, outliers_zscore: 0, skewness: null, is_constant: false, is_id_like: false, suggested_dtype: 'datetime', top_value: '2023-01-15', top_freq: 5, top_freq_pct: 0.4 },
+      ],
+    },
+    checks: {
+      missing: {
+        total_missing_pct: 1.37,
+        columns: [
+          { col: 'Salary', missing: 25, pct: 2.1, risk: 'LOW' },
+          { col: 'Age', missing: 12, pct: 1.0, risk: 'LOW' },
+          { col: 'Rating', missing: 5, pct: 0.4, risk: 'LOW' },
+        ],
+      },
+      duplicates: { duplicate_rows: 30, duplicate_pct: 2.5, risk: 'LOW' },
+      outliers: {
+        affected_columns: [
+          { col: 'Salary', iqr_count: 22, zscore_count: 9, risk: 'MEDIUM' },
+          { col: 'Product Price', iqr_count: 15, zscore_count: 6, risk: 'MEDIUM' },
+          { col: 'Age', iqr_count: 8, zscore_count: 3, risk: 'LOW' },
+        ],
+      },
+      wrong_types: { columns: [{ col: 'JoinDate', current_type: 'object', suggested_type: 'datetime' }] },
+      invalid_values: { negative_where_invalid: [], zero_where_invalid: [{ col: 'Salary', count: 3 }] },
+      skewness: {
+        columns: [
+          { col: 'Salary', skewness: 2.4, level: 'HIGH' },
+          { col: 'Product Price', skewness: 1.8, level: 'MEDIUM' },
+        ],
+      },
+      correlation: {
+        high_pairs: [{ col1: 'Age', col2: 'Salary', correlation: 0.93 }],
+        medium_pairs: [{ col1: 'Product Price', col2: 'Age', correlation: 0.71 }],
+      },
+    },
+    ml_readiness: {
+      task_type: 'classification',
+      class_imbalance: {
+        dominant_class: '4', dominant_pct: 68.0, minority_pct: 8.0, risk: 'MEDIUM',
+        class_counts: { '1': 60, '2': 95, '3': 240, '4': 560, '5': 245 },
+      },
+      leakage_risk_cols: [],
+      constant_features: [],
+      low_variance_features: [],
+    },
+    score: { total: 72, grade: 'Good', completeness: 27, consistency: 18, validity: 17, usability: 10 },
+    distributions: [
+      { col: 'Age', type: 'histogram', labels: ['18–25','26–33','34–41','42–49','50–57','58+'], values: [110, 230, 310, 280, 180, 90] },
+      { col: 'Product Price', type: 'histogram', labels: ['0–500','500–1000','1000–1500','1500–2000','2000+'], values: [480, 320, 220, 120, 60] },
+    ],
+    correlation_matrix: {
+      cols: ['Age', 'Salary', 'Product Price'],
+      matrix: [
+        [1.0, 0.93, 0.71],
+        [0.93, 1.0, 0.48],
+        [0.71, 0.48, 1.0],
+      ],
+    },
+    recommendations: [
+      { icon: '🧹', title: 'Handle Missing Values', problem: '1.37% of cells missing across 3 columns.', impact: 'Most ML algorithms cannot handle NaN.', fix: "df.fillna(df.median(), inplace=True)  # numeric\ndf.fillna(df.mode().iloc[0], inplace=True)  # categorical", priority: 'MEDIUM' },
+      { icon: '📐', title: 'Fix Highly Skewed Features', problem: 'Salary (skew=2.4) and Product Price (skew=1.8) are highly skewed.', impact: 'Skewed features hurt linear models and distance-based algorithms.', fix: "import numpy as np\ndf['Salary'] = np.log1p(df['Salary'])\ndf['Product Price'] = np.log1p(df['Product Price'])", priority: 'MEDIUM' },
+      { icon: '🔗', title: 'Remove Highly Correlated Features', problem: 'Age ↔ Salary have r=0.93 correlation.', impact: 'Multicollinearity inflates variance of coefficients.', fix: "# Drop one of each highly correlated pair\ncorr_matrix = df.corr().abs()\nupper = corr_matrix.where(np.triu(np.ones(corr_matrix.shape), k=1).astype(bool))\nto_drop = [col for col in upper.columns if any(upper[col] > 0.9)]\ndf = df.drop(columns=to_drop)", priority: 'MEDIUM' },
+      { icon: '🔧', title: 'Fix Column Data Types', problem: 'JoinDate stored as object, should be datetime.', impact: 'Wrong types prevent date operations and waste memory.', fix: "df['JoinDate'] = pd.to_datetime(df['JoinDate'], errors='coerce')", priority: 'LOW' },
+    ],
+  };
 }
 
 // ============================================================
@@ -455,19 +710,19 @@ function ScoreBar({ label, value, max, color }) {
 function LandingPage({ onNavigate }) {
   const { dark, setDark } = useApp();
   const features = [
-    { icon: '🔍', title: 'Deep Quality Analysis', desc: 'Detect missing values, duplicates, outliers, type mismatches, and skewed distributions.' },
-    { icon: '📊', title: 'Visual EDA Dashboard', desc: 'Interactive histograms, bar charts, and correlation charts for instant insight.' },
-    { icon: '🤖', title: 'ML Risk Prediction', desc: 'Predict Overfitting, Underfitting, and Safe Dataset status before you train.' },
-    { icon: '⚡', title: 'ML Readiness Score', desc: '5-dimension scoring: Completeness, Consistency, Validity, Balance, Usability.' },
-    { icon: '🛡️', title: 'AI Recommendations', desc: 'Actionable, priority-ranked preprocessing steps with specific code advice.' },
-    { icon: '📁', title: 'Multi-format Support', desc: 'Upload CSV, Excel (.xlsx/.xls), or JSON. Max 50 MB.' },
+    { icon: '🔍', title: 'Deep Quality Analysis', desc: 'Detect missing values, duplicates, outliers, type mismatches, and skewed distributions in seconds.' },
+    { icon: '📊', title: 'Visual EDA Dashboard', desc: 'Interactive histograms, bar charts, and a color-coded correlation heatmap for instant insight.' },
+    { icon: '🤖', title: 'ML Readiness Score', desc: 'Composite scoring across Completeness, Consistency, Validity, and Usability dimensions.' },
+    { icon: '📦', title: 'ZIP Multi-File Support', desc: 'Upload a ZIP of multiple CSVs or Excel files and analyze all at once with relationship detection.' },
+    { icon: '🛡️', title: 'AI Recommendations', desc: 'Actionable, priority-ranked preprocessing steps with specific Python code snippets.' },
+    { icon: '📁', title: 'Multi-format Support', desc: 'Upload CSV, Excel (.xlsx/.xls), JSON, or ZIP archives. Max 200 MB.' },
   ];
   return (
     <div className="landing">
       <nav className="landing-nav">
         <div className="nav-logo"><div className="logo-icon">🔍</div>DataQA</div>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-          <button className="icon-btn" onClick={() => setDark(!dark)} title="Toggle theme">{dark ? '☀️' : '🌙'}</button>
+          <button className="icon-btn" onClick={() => setDark(!dark)} title="Toggle theme" aria-label="Toggle theme">{dark ? '☀️' : '🌙'}</button>
           <button className="btn btn-ghost btn-sm" onClick={() => onNavigate('login')}>Log in</button>
           <button className="btn btn-primary btn-sm" onClick={() => onNavigate('signup')}>Get Started</button>
         </div>
@@ -475,7 +730,7 @@ function LandingPage({ onNavigate }) {
       <div className="hero">
         <div className="hero-badge">✨ AI-Powered Dataset Analysis</div>
         <h1>Analyze Dataset Quality<br /><span>Before You Train</span></h1>
-        <p>Upload your dataset and get an instant quality report — missing values, outliers, correlations, ML risk predictions, and a readiness score in one place.</p>
+        <p>Upload your dataset and get an instant quality report — missing values, outliers, correlations, ML readiness score, and actionable fixes all in one place.</p>
         <div className="hero-actions">
           <button className="btn btn-primary btn-lg" onClick={() => onNavigate('signup')}>🚀 Start Analyzing Free</button>
           <button className="btn btn-outline btn-lg" onClick={() => onNavigate('login')}>View Demo</button>
@@ -490,14 +745,14 @@ function LandingPage({ onNavigate }) {
         ))}
       </div>
       <div style={{ textAlign: 'center', padding: '40px 20px 60px', color: 'var(--text-muted)', fontSize: 14 }}>
-        © 2026 DataQA · Dataset Quality Analyzer
+        © 2025 DataQA · Dataset Quality Analyzer
       </div>
     </div>
   );
 }
 
 // ============================================================
-// AUTH PAGE
+// AUTH PAGE (Login + Signup)
 // ============================================================
 function AuthPage({ mode, onNavigate }) {
   const { login, toast } = useApp();
@@ -562,7 +817,7 @@ function AuthPage({ mode, onNavigate }) {
           </div>
           <button className="btn btn-primary w-full" type="submit" disabled={loading}
             style={{ justifyContent: 'center', marginTop: 4 }}>
-            {loading ? '⏳ Please wait...' : isLogin ? '🔐 Sign In' : '🚀 Create Account'}
+            {loading ? '⏳ Please wait…' : isLogin ? '🔐 Sign In' : '🚀 Create Account'}
           </button>
         </form>
         <div className="auth-switch">
@@ -571,14 +826,12 @@ function AuthPage({ mode, onNavigate }) {
             : <><span>Already have an account? </span><a onClick={() => onNavigate('login')}>Sign in</a></>}
         </div>
         <div style={{ textAlign: 'center', marginTop: 12 }}>
-          <a style={{ fontSize: 13, color: 'var(--text-muted)', cursor: 'pointer' }}
-            onClick={() => onNavigate('landing')}>← Back to home</a>
+          <a style={{ fontSize: 13, color: 'var(--text-muted)', cursor: 'pointer' }} onClick={() => onNavigate('landing')}>← Back to home</a>
         </div>
       </div>
     </div>
   );
 }
-
 
 // ============================================================
 // SIDEBAR + TOPBAR
@@ -608,7 +861,7 @@ function Sidebar({ page, onNavigate, open, onClose }) {
         </nav>
         <div className="sidebar-footer">
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-            <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'linear-gradient(135deg, var(--primary), #a855f7)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 700, fontSize: 15 }}>
+            <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'linear-gradient(135deg,var(--primary),#a855f7)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 700, fontSize: 15, flexShrink: 0 }}>
               {user?.name?.[0]?.toUpperCase() || 'U'}
             </div>
             <div style={{ overflow: 'hidden' }}>
@@ -616,9 +869,7 @@ function Sidebar({ page, onNavigate, open, onClose }) {
               <div style={{ fontSize: 11, color: 'var(--text-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{user?.email}</div>
             </div>
           </div>
-          <button className="btn btn-ghost btn-sm w-full" onClick={logout} style={{ justifyContent: 'center' }}>
-            🚪 Sign Out
-          </button>
+          <button className="btn btn-ghost btn-sm w-full" onClick={logout} style={{ justifyContent: 'center' }}>🚪 Sign Out</button>
         </div>
       </aside>
     </>
@@ -643,26 +894,25 @@ function Topbar({ title, onMenuClick }) {
 }
 
 // ============================================================
-// DASHBOARD
+// DASHBOARD PAGE
 // ============================================================
 function DashboardPage({ onNavigate, history }) {
   const { user } = useApp();
   const stats = [
-    { icon: '📁', label: 'Datasets Analyzed', value: history.length, color: 'purple' },
-    { icon: '✅', label: 'Good Quality',       value: history.filter(h => (h.score || 0) >= 75).length, color: 'green' },
-    { icon: '⚠️', label: 'Needs Attention',   value: history.filter(h => (h.score || 0) >= 50 && (h.score || 0) < 75).length, color: 'yellow' },
-    { icon: '❌', label: 'Poor Quality',       value: history.filter(h => (h.score || 0) < 50).length, color: 'red' },
+    { icon: '📁', label: 'Datasets Analyzed',  value: history.length,                                                     color: 'purple' },
+    { icon: '✅', label: 'Good Quality',        value: history.filter(h => (h.score || 0) >= 70).length,                  color: 'green'  },
+    { icon: '⚠️', label: 'Needs Cleaning',     value: history.filter(h => (h.score || 0) >= 50 && (h.score||0) < 70).length, color: 'yellow' },
+    { icon: '❌', label: 'High Risk',           value: history.filter(h => (h.score || 0) < 50).length,                  color: 'red'    },
   ];
-
-  // Average score for last 5 analyses
-  const recentScores = history.slice(-5).map(h => h.score || 0);
-  const avgScore = recentScores.length ? Math.round(recentScores.reduce((a, b) => a + b, 0) / recentScores.length) : null;
+  const avgScore = history.length
+    ? Math.round(history.reduce((s, h) => s + (h.score || 0), 0) / history.length)
+    : null;
 
   return (
     <div>
       <div style={{ marginBottom: 28 }}>
         <h2 className="section-title">Welcome back, {user?.name} 👋</h2>
-        <p className="section-subtitle">Here's an overview of your dataset analysis activity.</p>
+        <p className="section-subtitle">Overview of your dataset analysis activity.</p>
       </div>
       <div className="stat-grid">
         {stats.map((s, i) => (
@@ -672,7 +922,7 @@ function DashboardPage({ onNavigate, history }) {
           </div>
         ))}
       </div>
-      <div className="grid-2" style={{ marginBottom: 24 }}>
+      <div className="grid-2">
         <div className="card">
           <div className="card-header">
             <div><div className="card-title">Quick Actions</div><div className="card-subtitle">Get started quickly</div></div>
@@ -680,14 +930,14 @@ function DashboardPage({ onNavigate, history }) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <button className="btn btn-primary" onClick={() => onNavigate('upload')}>📤 Upload New Dataset</button>
             <button className="btn btn-outline" onClick={() => onNavigate('reports')}>📊 View Latest Report</button>
-            <button className="btn btn-ghost" onClick={() => onNavigate('history')}>🕐 Browse History</button>
+            <button className="btn btn-ghost"   onClick={() => onNavigate('history')}>🕐 Browse History</button>
           </div>
         </div>
         <div className="card">
           <div className="card-header">
             <div><div className="card-title">Recent Uploads</div><div className="card-subtitle">Your last 3 datasets</div></div>
             {avgScore !== null && (
-              <span className={`badge ${avgScore >= 75 ? 'badge-success' : avgScore >= 50 ? 'badge-warning' : 'badge-danger'}`}>
+              <span className={`badge ${avgScore >= 70 ? 'badge-success' : avgScore >= 50 ? 'badge-warning' : 'badge-danger'}`}>
                 Avg {avgScore}/100
               </span>
             )}
@@ -704,7 +954,7 @@ function DashboardPage({ onNavigate, history }) {
                   <div style={{ fontSize: 14, fontWeight: 600 }}>{h.filename}</div>
                   <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>{h.date}</div>
                 </div>
-                <span className={`badge ${(h.score||0) >= 75 ? 'badge-success' : (h.score||0) >= 50 ? 'badge-warning' : 'badge-danger'}`}>
+                <span className={`badge ${(h.score||0) >= 70 ? 'badge-success' : (h.score||0) >= 50 ? 'badge-warning' : 'badge-danger'}`}>
                   {h.score ?? '—'}/100
                 </span>
               </div>
@@ -716,221 +966,191 @@ function DashboardPage({ onNavigate, history }) {
   );
 }
 
-
-// ============================================================
-// MOCK REPORT (demo mode when backend is offline)
-// ============================================================
-function seededRng(seed) {
-  let s = seed >>> 0;
-  return () => {
-    s += 0x6d2b79f5;
-    let t = Math.imul(s ^ (s >>> 15), 1 | s);
-    t ^= t + Math.imul(t ^ (t >>> 7), 61 | t);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-function hashStr(str) {
-  let h = 2166136261;
-  for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
-  return h >>> 0;
-}
-
-function generateMockReport(filename, targetCol, actualRowCount = null) {
-  const seed = hashStr(filename.toLowerCase() + '|' + targetCol.toLowerCase());
-  const rng = seededRng(seed);
-  const score = Math.floor(rng() * 40) + 55;
-  const num_samples = actualRowCount !== null ? actualRowCount : Math.floor(rng() * 2000) + 200;
-  const num_features = Math.floor(rng() * 15) + 3;
-  const missing_pct = +(rng() * 12).toFixed(2);
-  const duplicate_pct = +(rng() * 8).toFixed(2);
-  const outlier_pct = +(rng() * 10).toFixed(2);
-  const class_imbalance = +(rng() * 0.4 + 0.6).toFixed(3);
-  const duplicate_count = Math.round(num_samples * duplicate_pct / 100);
-  const outlier_count = Math.round(num_samples * outlier_pct / 100);
-  const clean_count = num_samples - duplicate_count;
-  return {
-    score,
-    score_breakdown: {
-      total: score,
-      completeness: Math.max(0, 30 - Math.round(missing_pct * 2.5)),
-      consistency: Math.max(0, 20 - Math.round(duplicate_pct * 3)),
-      validity: Math.max(0, 20 - Math.round(outlier_pct * 1.5)),
-      balance: class_imbalance > 0.9 ? 5 : class_imbalance > 0.8 ? 10 : 15,
-      usability: 12,
-    },
-    prediction: score >= 75 ? 'Safe Dataset' : score >= 55 ? 'Overfitting Risk' : 'Underfitting Risk',
-    summary: { num_samples, clean_count, duplicate_count, duplicate_pct, outlier_count, outlier_pct,
-               num_features, missing_pct, class_imbalance, count_source: actualRowCount ? 'file' : 'estimated' },
-    advanced: { highly_skewed_cols: ['Age'], high_cv_cols: [], constant_cols: [], high_cardinality_cols: [] },
-    columns: [
-      { name: 'Age', dtype: 'numeric', missing: 5, missing_pct: 1.2, outliers: 3, skewness: 0.8, constant: false, high_cardinality: false, type_mismatch: false, issue: true },
-      { name: 'Product Price', dtype: 'numeric', missing: 0, missing_pct: 0, outliers: 12, skewness: 1.9, constant: false, high_cardinality: false, type_mismatch: false, issue: true },
-      { name: 'Rating', dtype: 'numeric', missing: 2, missing_pct: 0.5, outliers: 0, skewness: -0.3, constant: false, high_cardinality: false, type_mismatch: false, issue: true },
-      { name: targetCol, dtype: 'categorical', missing: 0, missing_pct: 0, outliers: 0, skewness: null, constant: false, high_cardinality: false, type_mismatch: false, issue: false },
-    ],
-    distributions: [
-      { col: 'Age', type: 'histogram', labels: ['18–25','26–33','34–41','42–49','50–57','58–65'], values: [120,210,180,160,90,40] },
-      { col: 'Product Price', type: 'histogram', labels: ['0–250','250–500','500–750','750–1000','1000+'], values: [80,220,310,250,140] },
-      { col: 'Rating', type: 'histogram', labels: ['1–2','3–4','5–6','7–8','9–10'], values: [40,90,200,380,290] },
-    ],
-    distribution: { labels: ['18–25','26–33','34–41','42–49','50+'], values: [120,210,180,160,130] },
-    correlation: [0.42, 0.31],
-    corr_cols: ['Age', 'Product Price'],
-    recommendations: [
-      { icon: '🧹', title: 'Handle Missing Values', desc: 'Use median imputation for numeric columns with < 5% missing data.', priority: 'medium' },
-      { icon: '📐', title: 'Fix Skewed Features', desc: 'Apply log1p or Box-Cox transform to Age, Product Price.', priority: 'medium' },
-      { icon: '📏', title: 'Scale Numeric Features', desc: 'Apply StandardScaler after train/test split.', priority: 'low' },
-      { icon: '⚖️', title: 'Address Class Imbalance', desc: 'Use SMOTE or class_weight="balanced".', priority: 'medium' },
-    ],
-  };
-}
-
 // ============================================================
 // UPLOAD PAGE
 // ============================================================
 function UploadPage({ onAnalyzed }) {
   const { toast } = useApp();
-  const [file, setFile] = useState(null);
-  const [drag, setDrag] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [file, setFile]           = useState(null);
+  const [drag, setDrag]           = useState(false);
+  const [progress, setProgress]   = useState(0);
+  const [loading, setLoading]     = useState(false);
   const [targetCol, setTargetCol] = useState('');
   const [availableCols, setAvailableCols] = useState([]);
+  const [suggestedAfterUpload, setSuggestedAfterUpload] = useState([]);
   const inputRef = useRef();
-  const ACCEPTED = ['.csv', '.xlsx', '.xls', '.json'];
+  const ACCEPTED = ['.csv', '.xlsx', '.xls', '.json', '.zip'];
+
+  const isZip = file && file.name.toLowerCase().endsWith('.zip');
 
   const validateFile = (f) => {
     const ext = '.' + f.name.split('.').pop().toLowerCase();
-    if (!ACCEPTED.includes(ext)) { toast('Unsupported type. Use CSV, Excel, or JSON.', 'error'); return false; }
-    if (f.size > 50 * 1024 * 1024) { toast('File too large. Max 50 MB.', 'error'); return false; }
+    if (!ACCEPTED.includes(ext)) { toast('Unsupported file type. Use CSV, Excel, JSON, or ZIP.', 'error'); return false; }
+    if (f.size > 200 * 1024 * 1024) { toast('File too large. Max 200 MB.', 'error'); return false; }
     return true;
   };
 
-  const handleFile = (f) => { if (f && validateFile(f)) { setFile(f); setAvailableCols([]); } };
+  const handleFile = (f) => {
+    if (f && validateFile(f)) {
+      setFile(f);
+      setAvailableCols([]);
+      setSuggestedAfterUpload([]);
+    }
+  };
   const handleDrop = (e) => { e.preventDefault(); setDrag(false); handleFile(e.dataTransfer.files[0]); };
-
-  const readActualRowCount = (f) => new Promise((resolve) => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      try {
-        const lines = e.target.result.split('\n').filter(l => l.trim().length > 0);
-        resolve(Math.max(0, lines.length - 1));
-      } catch { resolve(null); }
-    };
-    reader.onerror = () => resolve(null);
-    reader.readAsText(f.slice(0, 2 * 1024 * 1024));
-  });
 
   const handleAnalyze = async () => {
     if (!file) { toast('Please select a file first.', 'error'); return; }
-    if (!targetCol.trim()) { toast('Please enter the target column name.', 'error'); return; }
-    setLoading(true); setProgress(0); setAvailableCols([]);
-
-    const ext = file.name.split('.').pop().toLowerCase();
-    let actualRowCount = null;
-    if (ext === 'csv') actualRowCount = await readActualRowCount(file);
+    setLoading(true); setProgress(0); setAvailableCols([]); setSuggestedAfterUpload([]);
 
     for (let i = 10; i <= 80; i += 10) {
-      await new Promise(r => setTimeout(r, 100));
+      await new Promise(r => setTimeout(r, 80));
       setProgress(i);
     }
 
     try {
-      let result; let usedBackend = false;
+      let result;
+      let usedBackend = false;
+
       try {
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('target_column', targetCol);
+        if (targetCol.trim()) formData.append('target_column', targetCol.trim());
+
         const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 30000);
+        const timeout = setTimeout(() => controller.abort(), 60000);
         const response = await fetch('http://localhost:5000/api/analyze', {
           method: 'POST', body: formData, signal: controller.signal,
         });
         clearTimeout(timeout);
         const data = await response.json();
+
         if (!response.ok || data.error) {
           if (data.available_columns) {
             setAvailableCols(data.available_columns);
-            toast(`❌ ${data.error}`, 'error');
+            toast('Column not found. Pick one from the list below.', 'error');
             setLoading(false); setProgress(0); return;
           }
-          throw new Error(data.error || `Backend error: ${response.status}`);
+          throw new Error(data.error || `Backend error ${response.status}`);
         }
-        result = data; usedBackend = true;
+
+        result = data;
+        usedBackend = true;
+
+        // Show suggested targets if backend gave them and no target was used
+        if (!targetCol.trim() && result.suggested_targets && result.suggested_targets.length > 0) {
+          setSuggestedAfterUpload(result.suggested_targets);
+        }
       } catch (backendErr) {
-        const isNetwork = backendErr.name === 'AbortError' ||
-          ['fetch', 'Failed to fetch', 'NetworkError', 'Load failed'].some(s => backendErr.message.includes(s));
-        if (isNetwork) {
-          console.warn('[DataQA] Backend unreachable, using mock:', backendErr.message);
-          result = generateMockReport(file.name, targetCol, actualRowCount);
-        } else { throw backendErr; }
+        const isNet = backendErr.name === 'AbortError' ||
+          ['fetch', 'Failed to fetch', 'NetworkError', 'Load failed'].some(s => (backendErr.message || '').includes(s));
+        if (isNet) {
+          console.warn('[DataQA] Backend offline, using mock data');
+          result = generateMockReport(file.name);
+        } else {
+          throw backendErr;
+        }
       }
 
       setProgress(100);
       await new Promise(r => setTimeout(r, 200));
-      toast(usedBackend ? '✅ Analysis complete!' : '✅ Demo mode (backend offline)', usedBackend ? 'success' : 'warning');
-      onAnalyzed({ ...result, filename: file.name, date: new Date().toLocaleDateString(), usedBackend });
+      toast(usedBackend ? '✅ Analysis complete!' : '✅ Demo mode — backend offline', usedBackend ? 'success' : 'warning');
+      onAnalyzed({ ...result, _usedBackend: usedBackend });
     } catch (err) {
       toast('Analysis failed: ' + err.message, 'error');
       setProgress(0);
-    } finally { setLoading(false); }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleReset = () => {
+    setFile(null); setTargetCol(''); setProgress(0);
+    setAvailableCols([]); setSuggestedAfterUpload([]);
   };
 
   return (
     <div>
       <h2 className="section-title">Upload Dataset</h2>
-      <p className="section-subtitle">Get a full quality analysis — missing values, outliers, skewness, correlations, and ML risk in seconds.</p>
-      <div style={{ maxWidth: 640 }}>
+      <p className="section-subtitle">Get a full quality analysis — missing values, outliers, skewness, correlations, and ML readiness.</p>
+      <div style={{ maxWidth: 680 }}>
         <div className="card" style={{ marginBottom: 20 }}>
-          <div className={`upload-zone ${drag ? 'drag-over' : ''}`}
+          <div
+            className={`upload-zone ${drag ? 'drag-over' : ''}`}
             onDragOver={e => { e.preventDefault(); setDrag(true); }}
             onDragLeave={() => setDrag(false)}
             onDrop={handleDrop}
-            onClick={() => !file && inputRef.current.click()}>
-            <input ref={inputRef} type="file" accept=".csv,.xlsx,.xls,.json" style={{ display: 'none' }}
-              onChange={e => handleFile(e.target.files[0])} />
+            onClick={() => !file && inputRef.current.click()}
+          >
+            <input ref={inputRef} type="file" accept=".csv,.xlsx,.xls,.json,.zip"
+              style={{ display: 'none' }} onChange={e => handleFile(e.target.files[0])} />
             {file ? (
               <>
                 <div className="upload-icon">✅</div>
                 <div className="upload-title">File Ready</div>
                 <div className="upload-file-info">
-                  <span style={{ fontSize: 24 }}>📄</span>
+                  <span style={{ fontSize: 24 }}>{isZip ? '📦' : '📄'}</span>
                   <span className="upload-file-name">{file.name}</span>
                   <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>{(file.size / 1024).toFixed(1)} KB</span>
-                  <button className="btn btn-ghost btn-sm" onClick={e => { e.stopPropagation(); setFile(null); setProgress(0); setAvailableCols([]); }}>✕</button>
+                  <button className="btn btn-ghost btn-sm" style={{ padding: '4px 10px' }}
+                    onClick={e => { e.stopPropagation(); handleReset(); }}>✕</button>
                 </div>
+                {isZip && (
+                  <div className="zip-indicator">
+                    📦 ZIP detected — multiple files will be analyzed together
+                  </div>
+                )}
               </>
             ) : (
               <>
                 <div className="upload-icon">📁</div>
                 <div className="upload-title">Drop your dataset here</div>
-                <div className="upload-subtitle">or click to browse · CSV, Excel, JSON · Max 50 MB</div>
+                <div className="upload-subtitle">or click to browse · CSV, Excel, JSON, ZIP · Max 200 MB</div>
               </>
             )}
           </div>
           {loading && (
             <div style={{ marginTop: 16 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 6 }}>
-                <span>Analyzing dataset...</span><span>{progress}%</span>
+                <span>Analyzing dataset…</span><span>{progress}%</span>
               </div>
               <div className="progress-bar-wrap"><div className="progress-bar" style={{ width: `${progress}%` }} /></div>
             </div>
           )}
         </div>
+
         <div className="card">
           <div className="form-group">
-            <label className="form-label">Target Column Name</label>
-            <input className="form-input" placeholder="e.g., Rating, Promoter Score, label, target"
-              value={targetCol} onChange={e => { setTargetCol(e.target.value); setAvailableCols([]); }} />
-            <div className="form-hint">The column your ML model will predict (the label/output column).</div>
+            <label className="form-label">Target Column <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}>(Optional)</span></label>
+            <input className="form-input"
+              placeholder="e.g., Rating, label, churn, price"
+              value={targetCol}
+              onChange={e => { setTargetCol(e.target.value); setAvailableCols([]); }} />
+            <div className="form-hint">
+              Leave blank for general data quality analysis. For ML-specific checks, enter your label column name.
+            </div>
             {availableCols.length > 0 && (
               <div style={{ marginTop: 10, padding: 12, background: 'rgba(239,68,68,.06)', borderRadius: 8, border: '1px solid rgba(239,68,68,.2)' }}>
                 <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--danger)', marginBottom: 8 }}>❌ Column not found. Click to select:</div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                   {availableCols.map(col => (
-                    <button key={col} className="badge badge-info"
-                      style={{ cursor: 'pointer', border: 'none', fontSize: 12, padding: '4px 10px' }}
+                    <button key={col} className="badge badge-info" style={{ cursor: 'pointer', border: 'none', fontSize: 12, padding: '4px 10px' }}
                       onClick={() => { setTargetCol(col); setAvailableCols([]); }}>{col}</button>
+                  ))}
+                </div>
+              </div>
+            )}
+            {suggestedAfterUpload.length > 0 && (
+              <div style={{ marginTop: 10, padding: 12, background: 'rgba(99,102,241,.06)', borderRadius: 8, border: '1px solid rgba(99,102,241,.2)' }}>
+                <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--primary)', marginBottom: 8 }}>
+                  💡 Suggested targets: click to re-analyze with a target
+                </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                  {suggestedAfterUpload.map(s => (
+                    <button key={s.column} className="badge badge-purple" style={{ cursor: 'pointer', border: 'none', fontSize: 12, padding: '4px 10px' }}
+                      onClick={() => setTargetCol(s.column)}>
+                      {s.column} <span style={{ opacity: 0.7 }}>({Math.round(s.confidence * 100)}%)</span>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -939,11 +1159,9 @@ function UploadPage({ onAnalyzed }) {
           <div style={{ display: 'flex', gap: 12 }}>
             <button className="btn btn-primary" onClick={handleAnalyze} disabled={loading || !file}
               style={{ flex: 1, justifyContent: 'center' }}>
-              {loading ? '⏳ Analyzing...' : '🔍 Analyze Dataset'}
+              {loading ? '⏳ Analyzing…' : '🔍 Analyze Dataset'}
             </button>
-            <button className="btn btn-ghost" onClick={() => { setFile(null); setTargetCol(''); setProgress(0); setAvailableCols([]); }} disabled={loading}>
-              Reset
-            </button>
+            <button className="btn btn-ghost" onClick={handleReset} disabled={loading}>Reset</button>
           </div>
         </div>
       </div>
@@ -951,401 +1169,668 @@ function UploadPage({ onAnalyzed }) {
   );
 }
 
+// ============================================================
+// SINGLE FILE REPORT VIEW
+// ============================================================
+function SingleFileReport({ report }) {
+  const [colsExpanded, setColsExpanded] = useState(false);
+  if (!report) return null;
 
-// ============================================================
-// CHARTS
-// ============================================================
-function BarChart({ labels, values, color = '#6366f1' }) {
-  const canvasRef = useRef(); const chartRef = useRef();
-  useEffect(() => {
-    if (!canvasRef.current || !labels?.length || !values?.length) return;
-    if (chartRef.current) { chartRef.current.destroy(); chartRef.current = null; }
-    chartRef.current = new Chart(canvasRef.current, {
-      type: 'bar',
-      data: { labels, datasets: [{ data: values, backgroundColor: color + 'cc', borderColor: color, borderWidth: 2, borderRadius: 6 }] },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: {
-          y: { beginAtZero: true, grid: { color: 'rgba(100,100,100,.08)' } },
-          x: { grid: { display: false }, ticks: { maxRotation: 30 } },
-        },
-      },
-    });
-    return () => { if (chartRef.current) { chartRef.current.destroy(); chartRef.current = null; } };
-  }, [JSON.stringify(labels), JSON.stringify(values), color]);
-  return <canvas ref={canvasRef} />;
+  const profile   = report.profile   || {};
+  const overview  = profile.overview || {};
+  const checks    = report.checks    || {};
+  const score     = report.score     || {};
+  const ml        = report.ml_readiness;
+  const recs      = report.recommendations || [];
+  const dists     = report.distributions   || [];
+  const corrMat   = report.correlation_matrix || {};
+  const cols      = profile.columns || [];
+  const suggested = report.suggested_targets || [];
+  const targetUsed = report.target_used;
+
+  const missingCols  = (checks.missing  || {}).columns || [];
+  const outlierCols  = (checks.outliers || {}).affected_columns || [];
+  const skewCols     = (checks.skewness || {}).columns || [];
+  const wrongTypes   = (checks.wrong_types || {}).columns || [];
+  const negInvalid   = (checks.invalid_values || {}).negative_where_invalid || [];
+  const zeroInvalid  = (checks.invalid_values || {}).zero_where_invalid || [];
+  const highCorr     = (checks.correlation || {}).high_pairs || [];
+  const medCorr      = (checks.correlation || {}).medium_pairs || [];
+  const allCorrPairs = [...highCorr, ...medCorr];
+
+  const totalScore = score.total || 0;
+  const grade = score.grade || '—';
+
+  // Download JSON
+  const handleDownload = () => {
+    const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${(report.filename || 'report').replace(/\.[^.]+$/, '')}_dqa_report.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const displayCols = colsExpanded ? cols : cols.slice(0, 20);
+
+  return (
+    <div>
+      {/* A. OVERVIEW CARD */}
+      <div className="card mb-6">
+        <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'flex-start' }}>
+          <ScoreRing score={totalScore} size={140} />
+          <div style={{ flex: 1, minWidth: 200 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+              <h3 style={{ fontSize: 20, fontWeight: 800 }}>{report.filename || 'Dataset Analysis'}</h3>
+              <GradeBadge grade={grade} />
+              {ml && <span className="badge badge-info">{ml.task_type === 'classification' ? '🔵 Classification' : '🟠 Regression'}</span>}
+            </div>
+            <div className="grid-4" style={{ gap: 12 }}>
+              {[
+                { label: 'Rows',         value: overview.rows         ?? '—' },
+                { label: 'Columns',      value: overview.columns      ?? '—' },
+                { label: 'Memory MB',    value: overview.memory_mb    ?? '—' },
+                { label: 'Missing %',    value: (overview.missing_pct ?? '—') + (overview.missing_pct !== undefined ? '%' : '') },
+                { label: 'Duplicates',   value: overview.duplicate_rows ?? '—' },
+                { label: 'Outlier Cols', value: outlierCols.length },
+                { label: 'Numeric Cols', value: overview.numeric_cols  ?? '—' },
+                { label: 'Categ. Cols',  value: overview.categorical_cols ?? '—' },
+              ].map((s, i) => (
+                <div key={i} style={{ background: 'var(--bg)', borderRadius: 8, padding: '10px 12px' }}>
+                  <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 2 }}>{s.label}</div>
+                  <div style={{ fontSize: 15, fontWeight: 700 }}>{String(s.value)}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* B. SCORE BREAKDOWN */}
+      <div className="card mb-6">
+        <div className="card-header">
+          <div><div className="card-title">📊 Score Breakdown</div><div className="card-subtitle">Quality scoring across 4 dimensions</div></div>
+          <GradeBadge grade={grade} />
+        </div>
+        <div className="grid-2">
+          <div>
+            <ScoreBar label="Completeness"  value={score.completeness} max={30} color="#10b981" />
+            <ScoreBar label="Consistency"   value={score.consistency}  max={20} color="#3b82f6" />
+            <ScoreBar label="Validity"      value={score.validity}     max={20} color="#f59e0b" />
+            <ScoreBar label="Usability"     value={score.usability}    max={30} color="#6366f1" />
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {[
+              { label: '🟢 Excellent',      desc: 'Score 90–100' },
+              { label: '🔵 Good',           desc: 'Score 70–89' },
+              { label: '🟡 Needs Cleaning', desc: 'Score 50–69' },
+              { label: '🔴 High Risk',      desc: 'Score < 50'  },
+            ].map((g, i) => (
+              <div key={i} style={{ fontSize: 13, color: 'var(--text-muted)', display: 'flex', justifyContent: 'space-between' }}>
+                <span>{g.label}</span><span style={{ opacity: .7 }}>{g.desc}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* C. DATA OVERVIEW MINI CARDS */}
+      <div className="grid-4 mb-6">
+        {[
+          { icon: '⬜', label: 'Missing Cells',  value: overview.missing_cells ?? '—', color: 'yellow' },
+          { icon: '🔁', label: 'Duplicate Rows', value: overview.duplicate_rows ?? '—', color: 'blue'   },
+          { icon: '📐', label: 'Outlier Cols',   value: outlierCols.length,              color: 'red'    },
+          { icon: '🔧', label: 'Wrong Type Cols',value: wrongTypes.length,               color: 'purple' },
+        ].map((s, i) => (
+          <div key={i} className="stat-card">
+            <div className={`stat-icon ${s.color}`}>{s.icon}</div>
+            <div><div className="stat-value" style={{ fontSize: 20 }}>{String(s.value)}</div><div className="stat-label">{s.label}</div></div>
+          </div>
+        ))}
+      </div>
+
+      {/* D. SUGGESTED TARGETS */}
+      {!targetUsed && suggested.length > 0 && (
+        <div className="card mb-6" style={{ border: '1px solid rgba(99,102,241,.3)', background: 'rgba(99,102,241,.04)' }}>
+          <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 10, color: 'var(--primary)' }}>
+            💡 No target column provided. Suggested targets based on data analysis:
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+            {suggested.map((s, i) => (
+              <span key={i} className="badge badge-purple" style={{ fontSize: 13, padding: '5px 12px' }}>
+                {s.column} <span style={{ opacity: .7 }}>· {Math.round((s.confidence || 0) * 100)}% confidence · {s.unique_values} unique</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* E. EDA DISTRIBUTIONS */}
+      {dists.length > 0 && (
+        <div className="card mb-6">
+          <div className="card-header">
+            <div><div className="card-title">📈 Value Distributions</div><div className="card-subtitle">Column distribution charts</div></div>
+          </div>
+          <div className="distributions-grid">
+            {dists.map((d, i) => (
+              <div key={i}>
+                <BarChart labels={d.labels || []} values={d.values || []} title={d.col} color="#6366f1" />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* F. CORRELATION HEATMAP */}
+      {corrMat.cols && corrMat.cols.length >= 2 && (
+        <div className="card mb-6">
+          <div className="card-header">
+            <div><div className="card-title">🔥 Correlation Heatmap</div><div className="card-subtitle">Pairwise feature correlations</div></div>
+          </div>
+          <CorrelationHeatmap cols={corrMat.cols} matrix={corrMat.matrix} />
+        </div>
+      )}
+
+      {/* G. QUALITY CHECKS DETAIL */}
+      <div className="card mb-6">
+        <div className="card-header">
+          <div><div className="card-title">🔬 Quality Checks Detail</div><div className="card-subtitle">Click sections to expand</div></div>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+
+          {/* Missing Values */}
+          <Collapsible title={`🔴 Missing Values`} badge={<span className="badge badge-warning">{missingCols.length} cols</span>} defaultOpen={missingCols.length > 0}>
+            {missingCols.length === 0 ? <p style={{ fontSize: 13, color: 'var(--text-muted)', padding: '8px 4px' }}>✅ No missing values detected.</p> : (
+              <div className="table-wrap">
+                <table><thead><tr><th>Column</th><th>Missing</th><th>%</th><th>Risk</th></tr></thead>
+                <tbody>
+                  {missingCols.map((c, i) => (
+                    <tr key={i}><td style={{ fontWeight: 500 }}>{c.col}</td><td>{c.missing}</td><td>{c.pct}%</td><td><RiskBadge risk={c.risk} /></td></tr>
+                  ))}
+                </tbody></table>
+              </div>
+            )}
+          </Collapsible>
+
+          {/* Outliers */}
+          <Collapsible title={`🟡 Outliers`} badge={<span className="badge badge-warning">{outlierCols.length} cols</span>} defaultOpen={outlierCols.length > 0}>
+            {outlierCols.length === 0 ? <p style={{ fontSize: 13, color: 'var(--text-muted)', padding: '8px 4px' }}>✅ No significant outliers detected.</p> : (
+              <div className="table-wrap">
+                <table><thead><tr><th>Column</th><th>IQR Count</th><th>Z-Score Count</th><th>Risk</th></tr></thead>
+                <tbody>
+                  {outlierCols.map((c, i) => (
+                    <tr key={i}><td style={{ fontWeight: 500 }}>{c.col}</td><td>{c.iqr_count}</td><td>{c.zscore_count}</td><td><RiskBadge risk={c.risk} /></td></tr>
+                  ))}
+                </tbody></table>
+              </div>
+            )}
+          </Collapsible>
+
+          {/* Skewness */}
+          <Collapsible title={`🔵 Skewness`} badge={<span className="badge badge-info">{skewCols.length} cols</span>}>
+            {skewCols.length === 0 ? <p style={{ fontSize: 13, color: 'var(--text-muted)', padding: '8px 4px' }}>✅ No highly skewed columns.</p> : (
+              <div className="table-wrap">
+                <table><thead><tr><th>Column</th><th>Skewness</th><th>Level</th></tr></thead>
+                <tbody>
+                  {skewCols.map((c, i) => (
+                    <tr key={i}><td style={{ fontWeight: 500 }}>{c.col}</td><td>{c.skewness}</td>
+                    <td><span className={`badge ${c.level === 'HIGH' ? 'badge-danger' : 'badge-warning'}`}>{c.level}</span></td></tr>
+                  ))}
+                </tbody></table>
+              </div>
+            )}
+          </Collapsible>
+
+          {/* Wrong Data Types */}
+          <Collapsible title={`🔧 Wrong Data Types`} badge={<span className="badge badge-purple">{wrongTypes.length} cols</span>}>
+            {wrongTypes.length === 0 ? <p style={{ fontSize: 13, color: 'var(--text-muted)', padding: '8px 4px' }}>✅ All column types look correct.</p> : (
+              <div className="table-wrap">
+                <table><thead><tr><th>Column</th><th>Current Type</th><th>Suggested Type</th></tr></thead>
+                <tbody>
+                  {wrongTypes.map((c, i) => (
+                    <tr key={i}><td style={{ fontWeight: 500 }}>{c.col}</td><td>{c.current_type}</td>
+                    <td><span className="badge badge-info">{c.suggested_type}</span></td></tr>
+                  ))}
+                </tbody></table>
+              </div>
+            )}
+          </Collapsible>
+
+          {/* Invalid Values */}
+          <Collapsible title={`⚠️ Invalid Values`} badge={<span className="badge badge-warning">{negInvalid.length + zeroInvalid.length} issues</span>}>
+            {negInvalid.length === 0 && zeroInvalid.length === 0 ? (
+              <p style={{ fontSize: 13, color: 'var(--text-muted)', padding: '8px 4px' }}>✅ No invalid values detected.</p>
+            ) : (
+              <div>
+                {negInvalid.length > 0 && (
+                  <>
+                    <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8, color: 'var(--danger)' }}>Negative values where invalid:</div>
+                    <div className="table-wrap" style={{ marginBottom: 12 }}>
+                      <table><thead><tr><th>Column</th><th>Count</th></tr></thead>
+                      <tbody>{negInvalid.map((c, i) => <tr key={i}><td style={{ fontWeight: 500 }}>{c.col}</td><td>{c.count}</td></tr>)}</tbody></table>
+                    </div>
+                  </>
+                )}
+                {zeroInvalid.length > 0 && (
+                  <>
+                    <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8, color: 'var(--warning)' }}>Zero values where invalid:</div>
+                    <div className="table-wrap">
+                      <table><thead><tr><th>Column</th><th>Count</th></tr></thead>
+                      <tbody>{zeroInvalid.map((c, i) => <tr key={i}><td style={{ fontWeight: 500 }}>{c.col}</td><td>{c.count}</td></tr>)}</tbody></table>
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
+          </Collapsible>
+
+          {/* High Correlations */}
+          <Collapsible title={`🔗 High Correlations`} badge={<span className="badge badge-info">{allCorrPairs.length} pairs</span>}>
+            {allCorrPairs.length === 0 ? <p style={{ fontSize: 13, color: 'var(--text-muted)', padding: '8px 4px' }}>✅ No high correlations found.</p> : (
+              <div className="table-wrap">
+                <table><thead><tr><th>Column 1</th><th>Column 2</th><th>Correlation</th></tr></thead>
+                <tbody>
+                  {allCorrPairs.map((p, i) => (
+                    <tr key={i}><td style={{ fontWeight: 500 }}>{p.col1}</td><td style={{ fontWeight: 500 }}>{p.col2}</td>
+                    <td><span className={`badge ${Math.abs(p.correlation) >= 0.9 ? 'badge-danger' : 'badge-warning'}`}>{p.correlation}</span></td></tr>
+                  ))}
+                </tbody></table>
+              </div>
+            )}
+          </Collapsible>
+        </div>
+      </div>
+
+      {/* H. COLUMN ANALYSIS TABLE */}
+      <div className="card mb-6">
+        <div className="card-header">
+          <div><div className="card-title">📋 Column Analysis</div><div className="card-subtitle">Per-column profile · {cols.length} columns</div></div>
+        </div>
+        {cols.length === 0 ? (
+          <div className="empty-state" style={{ padding: '20px 0' }}><p>No column data available.</p></div>
+        ) : (
+          <>
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th><th>Type</th><th>Missing</th><th>Unique</th>
+                    <th>Outliers (IQR)</th><th>Skewness</th><th>Flags</th><th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {displayCols.map((c, i) => {
+                    const hasIssue = c.missing > 0 || (c.outliers_iqr || 0) > 0 || c.is_constant || c.suggested_dtype;
+                    return (
+                      <tr key={i} className={hasIssue ? 'highlight-row' : ''}>
+                        <td style={{ fontWeight: 500 }}>{c.name}</td>
+                        <td><span className="badge badge-purple" style={{ fontSize: 11 }}>{c.dtype_class || '—'}</span></td>
+                        <td>{c.missing > 0 ? <span style={{ color: 'var(--warning)', fontWeight: 600 }}>{c.missing} ({c.missing_pct}%)</span> : <span style={{ color: 'var(--success)' }}>0</span>}</td>
+                        <td>{c.unique ?? '—'}</td>
+                        <td>{(c.outliers_iqr || 0) > 0 ? <span style={{ color: 'var(--danger)', fontWeight: 600 }}>{c.outliers_iqr}</span> : '0'}</td>
+                        <td>{c.skewness !== null && c.skewness !== undefined ? c.skewness.toFixed(2) : '—'}</td>
+                        <td>
+                          <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
+                            {c.is_id_like   && <span className="badge badge-info"    style={{ fontSize: 10 }}>ID</span>}
+                            {c.is_constant  && <span className="badge badge-danger"  style={{ fontSize: 10 }}>Constant</span>}
+                            {c.suggested_dtype && <span className="badge badge-warning" style={{ fontSize: 10 }}>→{c.suggested_dtype}</span>}
+                          </div>
+                        </td>
+                        <td>{hasIssue ? <span className="badge badge-warning">⚠️ Review</span> : <span className="badge badge-success">✅ OK</span>}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            {cols.length > 20 && (
+              <div style={{ marginTop: 12, textAlign: 'center' }}>
+                <button className="btn btn-ghost btn-sm" onClick={() => setColsExpanded(e => !e)}>
+                  {colsExpanded ? `▲ Show first 20 columns` : `▼ Show all ${cols.length} columns`}
+                </button>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+
+      {/* I. ML READINESS */}
+      {ml && (
+        <div className="card mb-6">
+          <div className="card-header">
+            <div><div className="card-title">🤖 ML Readiness</div><div className="card-subtitle">Machine learning suitability analysis</div></div>
+            <span className="badge badge-info">{ml.task_type === 'classification' ? '🔵 Classification' : '🟠 Regression'}</span>
+          </div>
+          <div className="grid-2">
+            <div>
+              {ml.task_type === 'classification' && ml.class_imbalance && (
+                <div>
+                  <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 12 }}>Class Distribution</div>
+                  <DonutChart
+                    labels={Object.keys(ml.class_imbalance.class_counts || {})}
+                    values={Object.values(ml.class_imbalance.class_counts || {})}
+                    colors={['#6366f1','#10b981','#f59e0b','#ef4444','#3b82f6','#8b5cf6']}
+                  />
+                  <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <span style={{ fontSize: 13 }}>Imbalance Risk:</span>
+                    <RiskBadge risk={ml.class_imbalance.risk} />
+                    <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>
+                      Dominant: {ml.class_imbalance.dominant_class} ({ml.class_imbalance.dominant_pct}%)
+                    </span>
+                  </div>
+                </div>
+              )}
+              {ml.task_type === 'regression' && (
+                <div style={{ padding: 16, background: 'var(--bg)', borderRadius: 8 }}>
+                  <div style={{ fontSize: 13, color: 'var(--text-muted)' }}>Target Skewness</div>
+                  <div style={{ fontSize: 22, fontWeight: 800 }}>{ml.target_skewness ?? '—'}</div>
+                  <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 4 }}>
+                    {Math.abs(ml.target_skewness || 0) > 2 ? '⚠️ Highly skewed — consider log transform' : '✅ Acceptable skewness'}
+                  </div>
+                </div>
+              )}
+            </div>
+            <div>
+              {ml.leakage_risk_cols && ml.leakage_risk_cols.length > 0 && (
+                <div style={{ marginBottom: 16 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--danger)', marginBottom: 8 }}>🚨 Leakage Risk Columns:</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                    {ml.leakage_risk_cols.map((c, i) => <span key={i} className="badge badge-danger">{c}</span>)}
+                  </div>
+                </div>
+              )}
+              {ml.low_variance_features && ml.low_variance_features.length > 0 && (
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--warning)', marginBottom: 8 }}>📉 Low Variance Features:</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                    {ml.low_variance_features.map((c, i) => <span key={i} className="badge badge-warning">{c}</span>)}
+                  </div>
+                </div>
+              )}
+              {ml.constant_features && ml.constant_features.length > 0 && (
+                <div style={{ marginTop: 12 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-muted)', marginBottom: 8 }}>🚫 Constant Features:</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                    {ml.constant_features.map((c, i) => <span key={i} className="badge badge-purple">{c}</span>)}
+                  </div>
+                </div>
+              )}
+              {(!ml.leakage_risk_cols || ml.leakage_risk_cols.length === 0) &&
+               (!ml.low_variance_features || ml.low_variance_features.length === 0) &&
+               (!ml.constant_features || ml.constant_features.length === 0) && (
+                <div style={{ padding: 16, background: 'rgba(16,185,129,.06)', borderRadius: 8, border: '1px solid rgba(16,185,129,.2)', fontSize: 13, color: 'var(--success)' }}>
+                  ✅ No leakage risk, low variance, or constant features detected.
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* J. AI RECOMMENDATIONS */}
+      {recs.length > 0 && (
+        <div className="card mb-6">
+          <div className="card-header">
+            <div><div className="card-title">💡 AI Recommendations</div><div className="card-subtitle">{recs.length} actionable suggestions</div></div>
+          </div>
+          {recs.map((r, i) => (
+            <div key={i} className="rec-card">
+              <div className="rec-card-header">
+                <div className="rec-card-title">
+                  <span style={{ fontSize: 20 }}>{r.icon || '💡'}</span>
+                  <span>{r.title}</span>
+                </div>
+                <PriorityBadge priority={r.priority || r.Priority} />
+              </div>
+              <div className="rec-card-body">
+                {r.problem && <div><b>Problem:</b> {r.problem}</div>}
+                {r.impact  && <div style={{ marginTop: 4 }}><b>Impact:</b> {r.impact}</div>}
+                {(r.fix || r.desc) && (
+                  <div className="rec-fix">{r.fix || r.desc}</div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* K. EXPORT BUTTONS */}
+      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 32 }}>
+        <button className="btn btn-success" onClick={handleDownload}>⬇️ Download JSON Report</button>
+        <button className="btn btn-ghost" onClick={() => window.print()}>🖨️ Export PDF</button>
+      </div>
+    </div>
+  );
 }
 
-function HorizontalBar({ labels, values }) {
-  const canvasRef = useRef(); const chartRef = useRef();
-  const COLORS = ['#6366f1','#10b981','#f59e0b','#ef4444','#3b82f6','#a855f7'];
-  useEffect(() => {
-    if (!canvasRef.current || !labels?.length || !values?.length) return;
-    if (chartRef.current) { chartRef.current.destroy(); chartRef.current = null; }
-    chartRef.current = new Chart(canvasRef.current, {
-      type: 'bar',
-      data: { labels, datasets: [{ data: values, backgroundColor: values.map((_, i) => COLORS[i % 6] + 'cc'), borderRadius: 4 }] },
-      options: {
-        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: {
-          x: { beginAtZero: true, max: 1, grid: { color: 'rgba(100,100,100,.08)' } },
-          y: { grid: { display: false } },
-        },
-      },
-    });
-    return () => { if (chartRef.current) { chartRef.current.destroy(); chartRef.current = null; } };
-  }, [JSON.stringify(labels), JSON.stringify(values)]);
-  return <canvas ref={canvasRef} />;
-}
-
-function DonutChart({ labels, values, colors }) {
-  const canvasRef = useRef(); const chartRef = useRef();
-  useEffect(() => {
-    if (!canvasRef.current || !labels?.length || !values?.length) return;
-    if (chartRef.current) { chartRef.current.destroy(); chartRef.current = null; }
-    chartRef.current = new Chart(canvasRef.current, {
-      type: 'doughnut',
-      data: { labels, datasets: [{ data: values, backgroundColor: colors || ['#10b981','#f59e0b','#ef4444'], borderWidth: 0, hoverOffset: 4 }] },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, padding: 14 } } },
-        cutout: '65%',
-      },
-    });
-    return () => { if (chartRef.current) { chartRef.current.destroy(); chartRef.current = null; } };
-  }, [JSON.stringify(labels), JSON.stringify(values)]);
-  return <canvas ref={canvasRef} />;
-}
-
 // ============================================================
-// REPORT PAGE  — full v2 with score breakdown, advanced metrics,
-//               EDA section, ML readiness, download
+// REPORT PAGE — supports both single-file and ZIP shapes
 // ============================================================
-
-// Priority badge helper
-function PriorityBadge({ priority }) {
-  const map = { high: ['badge-danger','🔴 High'], medium: ['badge-warning','🟡 Medium'], low: ['badge-info','🟢 Low'] };
-  const [cls, label] = map[priority] || ['badge-info', priority];
-  return <span className={`badge ${cls}`} style={{ fontSize: 11 }}>{label}</span>;
-}
-
 function ReportPage({ report }) {
+  const [activeFileIdx, setActiveFileIdx] = useState(0);
+
   if (!report) {
     return (
       <div>
         <h2 className="section-title">Analysis Report</h2>
         <div className="empty-state">
           <div className="empty-icon">📊</div>
-          <h3>No Analysis Yet</h3>
-          <p>Upload a dataset to generate your first quality report.</p>
+          <h3>No Report Yet</h3>
+          <p>Upload a dataset to see the analysis report here.</p>
         </div>
       </div>
     );
   }
 
-  const {
-    score = 0, score_breakdown = {}, prediction = '—', filename = '',
-    summary = {}, advanced = {}, columns = [], distribution = {},
-    correlation = [], recommendations = [],
-  } = report;
+  const isZip = Array.isArray(report.files);
+  const relationships = report.relationships || [];
 
-  const riskColor = score >= 75 ? 'badge-success' : score >= 50 ? 'badge-warning' : 'badge-danger';
+  if (isZip) {
+    const files = report.files || [];
+    const activeFile = files[activeFileIdx] || null;
 
-  // Download JSON report
-  const downloadReport = () => {
-    const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `dqa_report_${filename.replace(/\W/g, '_')}_${Date.now()}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-  };
+    return (
+      <div>
+        <h2 className="section-title">ZIP Analysis Report</h2>
+        <p className="section-subtitle">{files.length} file(s) analyzed from ZIP archive</p>
 
-  return (
-    <div>
-      {/* ── Header ────────────────────────────────────── */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
-        <div>
-          <h2 className="section-title">Analysis Report</h2>
-          <p className="section-subtitle">📄 {filename}</p>
-        </div>
-        <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
-          {report.usedBackend === false && <span className="badge badge-warning">⚠️ Demo Mode</span>}
-          {report.usedBackend === true  && <span className="badge badge-success">✅ Live Data</span>}
-          <button className="btn btn-outline btn-sm" onClick={downloadReport}>⬇️ Download JSON</button>
-          <button className="btn btn-outline btn-sm" onClick={() => window.print()}>🖨️ Export PDF</button>
-        </div>
-      </div>
-
-      {/* ── Score + ML Risk ────────────────────────────── */}
-      <div className="card" style={{ marginBottom: 20, display: 'flex', alignItems: 'flex-start', gap: 32, flexWrap: 'wrap' }}>
-        <ScoreRing score={score} />
-        <div style={{ flex: 1, minWidth: 240 }}>
-          <div style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 6 }}>ML Risk Prediction</div>
-          <span className={`badge ${riskColor}`} style={{ fontSize: 15, padding: '6px 16px' }}>
-            {score >= 75 ? '✅' : score >= 50 ? '⚠️' : '❌'} {prediction}
-          </span>
-          {summary.count_source === 'estimated' && (
-            <div style={{ marginTop: 8, fontSize: 12, color: 'var(--warning)', background: 'rgba(245,158,11,.1)', padding: '6px 10px', borderRadius: 6, display: 'inline-block' }}>
-              ⚠️ Sample count estimated — connect backend for exact numbers
-            </div>
-          )}
-          <div style={{ marginTop: 16, display: 'flex', gap: 24, flexWrap: 'wrap' }}>
-            {[
-              ['Total Samples',  summary.num_samples?.toLocaleString() ?? '—',  summary.count_source === 'file' ? '✅ from file' : '⚠️ estimated'],
-              ['Clean Samples',  summary.clean_count?.toLocaleString() ?? '—',  'after dedup'],
-              ['Features',       summary.num_features ?? '—', null],
-              ['Missing',        (summary.missing_pct ?? '—') + (summary.missing_pct != null ? '%' : ''), null],
-              ['Duplicates',     summary.duplicate_count != null ? `${summary.duplicate_count} (${summary.duplicate_pct}%)` : '—', null],
-              ['Outliers',       summary.outlier_count   != null ? `${summary.outlier_count} (${summary.outlier_pct}%)`   : '—', null],
-            ].map(([k, v, hint]) => (
-              <div key={k}>
-                <div style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 500 }}>{k}</div>
-                <div style={{ fontSize: 18, fontWeight: 700 }}>{v}</div>
-                {hint && <div style={{ fontSize: 10, marginTop: 1, color: hint.startsWith('✅') ? 'var(--success)' : hint.startsWith('⚠️') ? 'var(--warning)' : 'var(--text-muted)' }}>{hint}</div>}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ── ML Readiness Score Breakdown ── */}
-        {score_breakdown.total != null && (
-          <div style={{ minWidth: 220, flex: 1 }}>
-            <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 12 }}>ML Readiness Breakdown</div>
-            <ScoreBar label="Completeness (missing)"   value={score_breakdown.completeness ?? 0} max={30} color="#6366f1" />
-            <ScoreBar label="Consistency (dupes)"      value={score_breakdown.consistency  ?? 0} max={20} color="#10b981" />
-            <ScoreBar label="Validity (outliers)"      value={score_breakdown.validity     ?? 0} max={20} color="#f59e0b" />
-            <ScoreBar label="Balance (imbalance)"      value={score_breakdown.balance      ?? 0} max={15} color="#3b82f6" />
-            <ScoreBar label="Usability (structure)"    value={score_breakdown.usability    ?? 0} max={15} color="#a855f7" />
-          </div>
-        )}
-      </div>
-
-      {/* ── Advanced Metrics ────────────────────────────── */}
-      {advanced && (
-        <div className="card" style={{ marginBottom: 20 }}>
-          <div className="card-header"><div className="card-title">🧠 Advanced Data Metrics</div></div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
-            {[
-              { label: '📐 Highly Skewed Cols',     val: advanced.highly_skewed_cols, empty: 'None detected ✅' },
-              { label: '📉 High-Variance Cols (drift proxy)', val: advanced.high_cv_cols, empty: 'None detected ✅' },
-              { label: '🚫 Constant Cols',           val: advanced.constant_cols,       empty: 'None detected ✅' },
-              { label: '🔑 High-Cardinality Strings',val: advanced.high_cardinality_cols, empty: 'None detected ✅' },
-            ].map(({ label, val, empty }) => (
-              <div key={label} style={{ padding: 14, background: 'var(--bg)', borderRadius: 8 }}>
-                <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8 }}>{label}</div>
-                {val && val.length > 0
-                  ? val.map(c => <span key={c} className="badge badge-warning" style={{ margin: '2px 4px 2px 0', fontSize: 11 }}>{c}</span>)
-                  : <span style={{ fontSize: 12, color: 'var(--success)' }}>{empty}</span>}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* ── EDA: Value Distribution Charts ───────────────── */}
-      {report.distributions?.length > 0 ? (
-        <div style={{ marginBottom: 20 }}>
-          <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 14 }}>📊 EDA — Value Distributions</div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 16 }}>
-            {report.distributions.map((d, i) => (
-              <div key={i} className="card">
-                <div className="card-header">
-                  <div><div className="card-title">{d.col}</div><div className="card-subtitle">{d.type === 'histogram' ? 'Numeric distribution' : 'Category counts'}</div></div>
-                  <span className="badge badge-purple">{d.type}</span>
-                </div>
-                <div className="chart-container">
-                  <BarChart labels={d.labels} values={d.values} color={d.type === 'histogram' ? '#6366f1' : '#10b981'} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : distribution?.labels?.length > 0 && (
-        <div className="card" style={{ marginBottom: 20 }}>
-          <div className="card-header"><div className="card-title">📊 Value Distribution</div></div>
-          <div className="chart-container"><BarChart labels={distribution.labels} values={distribution.values} /></div>
-        </div>
-      )}
-
-      {/* ── Feature Correlation ───────────────────────────── */}
-      {report.corr_cols?.length > 0 && correlation?.some(v => v > 0) && (
-        <div className="card" style={{ marginBottom: 20 }}>
-          <div className="card-header">
-            <div><div className="card-title">🔗 Feature Correlations</div><div className="card-subtitle">Absolute Pearson correlation (ID columns excluded)</div></div>
-          </div>
-          <div className="chart-container">
-            <HorizontalBar labels={report.corr_cols} values={correlation.slice(0, report.corr_cols.length)} />
-          </div>
-        </div>
-      )}
-
-      {/* ── Column Analysis Table ─────────────────────────── */}
-      {columns.length > 0 && (
-        <div className="card" style={{ marginBottom: 20 }}>
-          <div className="card-header">
-            <div className="card-title">🗂️ Column Analysis</div>
-            <span className="badge badge-info">{columns.length} columns</span>
-          </div>
-          <div className="table-wrap">
-            <table>
-              <thead>
-                <tr><th>Column</th><th>Type</th><th>Missing</th><th>Outliers</th><th>Skewness</th><th>Flags</th><th>Status</th></tr>
-              </thead>
-              <tbody>
-                {columns.map((col, i) => (
-                  <tr key={i} className={col.issue ? 'highlight-row' : ''}>
-                    <td><strong>{col.name}</strong></td>
-                    <td><span className="badge badge-purple">{col.dtype}</span></td>
-                    <td>{col.missing} {col.missing_pct > 0 && <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>({col.missing_pct}%)</span>}</td>
-                    <td>{col.outliers}</td>
-                    <td>
-                      {col.skewness != null
-                        ? <span style={{ color: Math.abs(col.skewness) > 1.5 ? 'var(--warning)' : 'inherit' }}>
-                            {col.skewness} {Math.abs(col.skewness) > 1.5 ? '⚠️' : ''}
-                          </span>
-                        : <span style={{ color: 'var(--text-muted)' }}>—</span>}
-                    </td>
-                    <td>
-                      {col.constant && <span className="badge badge-danger" style={{ fontSize: 10, marginRight: 3 }}>Constant</span>}
-                      {col.high_cardinality && <span className="badge badge-warning" style={{ fontSize: 10, marginRight: 3 }}>High-card</span>}
-                      {col.type_mismatch && <span className="badge badge-warning" style={{ fontSize: 10 }}>Type mismatch</span>}
-                    </td>
-                    <td><span className={`badge ${col.issue ? 'badge-warning' : 'badge-success'}`}>{col.issue ? '⚠️ Review' : '✅ OK'}</span></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
-
-      {/* ── Recommendations ───────────────────────────────── */}
-      {recommendations.length > 0 && (
-        <div className="card">
-          <div className="card-header"><div className="card-title">💡 AI Preprocessing Recommendations</div></div>
-          {recommendations.map((r, i) => (
-            <div key={i} className="recommendation-item" style={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
-              <div style={{ display: 'flex', gap: 12 }}>
-                <span className="rec-icon">{r.icon}</span>
-                <div className="rec-text"><strong>{r.title}</strong>{r.desc}</div>
-              </div>
-              {r.priority && <div style={{ marginLeft: 12, flexShrink: 0 }}><PriorityBadge priority={r.priority} /></div>}
-            </div>
+        {/* File selector tabs */}
+        <div className="tab-bar">
+          {files.map((f, i) => (
+            <button key={i} className={`tab-btn ${activeFileIdx === i ? 'active' : ''}`}
+              onClick={() => setActiveFileIdx(i)}>
+              📄 {f.filename || `File ${i + 1}`}
+              {f.score && (
+                <span className={`badge ${(f.score.total || 0) >= 70 ? 'badge-success' : (f.score.total || 0) >= 50 ? 'badge-warning' : 'badge-danger'}`}
+                  style={{ marginLeft: 6, fontSize: 11 }}>{f.score.total}/100</span>
+              )}
+            </button>
           ))}
         </div>
-      )}
+
+        {/* Relationships panel */}
+        {relationships.length > 0 && (
+          <div className="card mb-6" style={{ border: '1px solid rgba(59,130,246,.3)', background: 'rgba(59,130,246,.04)' }}>
+            <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 10 }}>🔗 Detected File Relationships</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {relationships.map((rel, i) => (
+                <div key={i} style={{ fontSize: 13, display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span className="badge badge-info">{rel.file1}</span>
+                  <span style={{ color: 'var(--text-muted)' }}>{rel.col1}</span>
+                  <span>→</span>
+                  <span className="badge badge-info">{rel.file2}</span>
+                  <span style={{ color: 'var(--text-muted)' }}>{rel.col2}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Selected file report */}
+        {activeFile ? <SingleFileReport report={activeFile} /> : (
+          <div className="empty-state"><p>No file selected.</p></div>
+        )}
+      </div>
+    );
+  }
+
+  // Single file report
+  return (
+    <div>
+      <h2 className="section-title">Analysis Report</h2>
+      <p className="section-subtitle">{report.filename || 'Dataset'} · Analyzed {report.date || ''}</p>
+      <SingleFileReport report={report} />
     </div>
   );
 }
-
 
 // ============================================================
 // HISTORY PAGE
 // ============================================================
-function HistoryPage({ history, onViewReport }) {
-  return (
-    <div>
-      <h2 className="section-title">Upload History</h2>
-      <p className="section-subtitle">All your previously analyzed datasets.</p>
-      {history.length === 0 ? (
+function HistoryPage({ history, onNavigate, onSelectReport }) {
+  if (history.length === 0) {
+    return (
+      <div>
+        <h2 className="section-title">Analysis History</h2>
         <div className="empty-state">
           <div className="empty-icon">🕐</div>
           <h3>No History Yet</h3>
-          <p>Your analyzed datasets will appear here.</p>
+          <p>Your past dataset analyses will appear here.</p>
+          <button className="btn btn-primary mt-4" onClick={() => onNavigate('upload')}>📤 Upload First Dataset</button>
         </div>
-      ) : (
-        <div className="card">
-          <div className="table-wrap">
-            <table>
-              <thead>
-                <tr><th>Dataset</th><th>Date</th><th>Samples</th><th>Score</th><th>Risk</th><th>Action</th></tr>
-              </thead>
-              <tbody>
-                {[...history].reverse().map((h, i) => (
-                  <tr key={i}>
-                    <td><strong>📄 {h.filename}</strong></td>
-                    <td style={{ color: 'var(--text-muted)', fontSize: 13 }}>{h.date}</td>
-                    <td>
-                      {h.summary?.num_samples?.toLocaleString() || '—'}
-                      {h.summary?.count_source === 'file' && <span style={{ fontSize: 10, color: 'var(--success)', marginLeft: 4 }}>✅</span>}
-                    </td>
-                    <td><span className={`badge ${(h.score||0) >= 75 ? 'badge-success' : (h.score||0) >= 50 ? 'badge-warning' : 'badge-danger'}`}>{h.score ?? '—'}/100</span></td>
-                    <td><span className={`badge ${(h.score||0) >= 75 ? 'badge-success' : (h.score||0) >= 50 ? 'badge-warning' : 'badge-danger'}`}>{h.prediction || '—'}</span></td>
-                    <td><button className="btn btn-ghost btn-sm" onClick={() => onViewReport(h)}>View Report</button></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <h2 className="section-title">Analysis History</h2>
+      <p className="section-subtitle">{history.length} dataset{history.length !== 1 ? 's' : ''} analyzed</p>
+      <div className="card">
+        <div className="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Filename</th><th>Date</th><th>Score</th><th>Grade</th><th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[...history].reverse().map((h, i) => (
+                <tr key={i}>
+                  <td style={{ fontWeight: 500 }}>{h.filename || '—'}</td>
+                  <td style={{ color: 'var(--text-muted)', fontSize: 13 }}>{h.date || '—'}</td>
+                  <td>
+                    <span className={`badge ${(h.score||0) >= 70 ? 'badge-success' : (h.score||0) >= 50 ? 'badge-warning' : 'badge-danger'}`}>
+                      {h.score ?? '—'}/100
+                    </span>
+                  </td>
+                  <td><GradeBadge grade={h.grade} /></td>
+                  <td>
+                    <button className="btn btn-ghost btn-sm" onClick={() => { onSelectReport(h._report); onNavigate('reports'); }}>
+                      📊 View Report
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      )}
+      </div>
     </div>
   );
 }
 
 // ============================================================
-// APP SHELL
+// MAIN APP
 // ============================================================
-function AppShell() {
+function App() {
   const { user } = useApp();
-  const [page, setPage] = useState(() => user ? 'dashboard' : 'landing');
+  const [page, setPage] = useState('landing');
   const [report, setReport] = useState(null);
   const [history, setHistory] = useState(() => {
-    try { return JSON.parse(localStorage.getItem('dqa_history')) || []; } catch { return []; }
+    try { return JSON.parse(localStorage.getItem('dqa_history') || '[]'); } catch { return []; }
   });
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  // Navigate to landing if not logged in and trying to access app pages
   useEffect(() => {
     if (!user && !['landing','login','signup'].includes(page)) setPage('landing');
-    if (user  &&  ['landing','login','signup'].includes(page)) setPage('dashboard');
+    if (user && page === 'landing') setPage('dashboard');
   }, [user]);
 
-  const handleAnalyzed = useCallback((result) => {
-    setReport(result);
-    setHistory(prev => {
-      const updated = [...prev, result];
-      localStorage.setItem('dqa_history', JSON.stringify(updated));
-      return updated;
-    });
-    setPage('reports');
-  }, []);
-
-  const handleViewReport = useCallback((r) => { setReport(r); setPage('reports'); }, []);
-
-  const pageTitles = {
-    dashboard: 'Dashboard', upload: 'Upload Dataset',
-    reports: 'Analysis Report', history: 'History',
+  const saveHistory = (entry) => {
+    const updated = [...history, entry].slice(-50);
+    setHistory(updated);
+    try { localStorage.setItem('dqa_history', JSON.stringify(updated)); } catch {}
   };
 
+  const handleAnalyzed = (result) => {
+    setReport(result);
+    // Determine score value for history entry
+    let scoreVal, gradeVal;
+    if (result.files) {
+      // ZIP — aggregate avg score
+      const scores = (result.files || []).map(f => (f.score || {}).total || 0);
+      scoreVal = scores.length ? Math.round(scores.reduce((a,b) => a+b, 0) / scores.length) : null;
+      gradeVal = scoreVal >= 90 ? 'Excellent' : scoreVal >= 70 ? 'Good' : scoreVal >= 50 ? 'Needs Cleaning' : 'High Risk';
+    } else {
+      scoreVal = (result.score || {}).total ?? result.score ?? null;
+      gradeVal = (result.score || {}).grade ?? null;
+    }
+    saveHistory({
+      filename: result.filename || 'dataset',
+      date: result.date || new Date().toLocaleDateString(),
+      score: scoreVal,
+      grade: gradeVal,
+      _report: result,
+    });
+    setPage('reports');
+  };
+
+  const pageTitle = {
+    dashboard: 'Dashboard',
+    upload:    'Upload Dataset',
+    reports:   'Analysis Report',
+    history:   'History',
+  }[page] || 'DataQA';
+
+  // Public pages
   if (page === 'landing') return <LandingPage onNavigate={setPage} />;
   if (page === 'login')   return <AuthPage mode="login"  onNavigate={setPage} />;
   if (page === 'signup')  return <AuthPage mode="signup" onNavigate={setPage} />;
 
+  // Authenticated app layout
   return (
     <div className="app-layout">
-      <Sidebar page={page} onNavigate={setPage} open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <Sidebar
+        page={page}
+        onNavigate={setPage}
+        open={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+      />
       <div className="main-content">
-        <Topbar title={pageTitles[page] || 'DataQA'} onMenuClick={() => setSidebarOpen(s => !s)} />
+        <Topbar title={pageTitle} onMenuClick={() => setSidebarOpen(o => !o)} />
         <main className="page-content">
           {page === 'dashboard' && <DashboardPage onNavigate={setPage} history={history} />}
           {page === 'upload'    && <UploadPage onAnalyzed={handleAnalyzed} />}
           {page === 'reports'   && <ReportPage report={report} />}
-          {page === 'history'   && <HistoryPage history={history} onViewReport={handleViewReport} />}
+          {page === 'history'   && <HistoryPage history={history} onNavigate={setPage} onSelectReport={r => setReport(r)} />}
         </main>
       </div>
     </div>
   );
 }
 
-function App() {
-  return <AppProvider><AppShell /></AppProvider>;
-}
-
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+// ============================================================
+// ROOT RENDER
+// ============================================================
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <AppProvider>
+    <App />
+  </AppProvider>
+);
   </script>
 </body>
 </html>
