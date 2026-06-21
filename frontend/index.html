@@ -322,6 +322,39 @@ body.dark .empty-state h3 { color: var(--text-dark); }
   .card { break-inside: avoid; box-shadow: none !important; border: 1px solid #ccc !important; }
   body { background: white !important; color: black !important; }
 }
+
+/* ===== SEVERITY PANEL ===== */
+.severity-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 20px; }
+.sev-card { border-radius: 10px; padding: 16px; text-align: center; }
+.sev-card.critical { background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.25); }
+.sev-card.high     { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.25); }
+.sev-card.medium   { background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.25); }
+.sev-card.low      { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.25); }
+body.dark .sev-card.critical { background: rgba(239,68,68,.15); }
+body.dark .sev-card.high     { background: rgba(245,158,11,.15); }
+body.dark .sev-card.medium   { background: rgba(59,130,246,.15); }
+body.dark .sev-card.low      { background: rgba(16,185,129,.15); }
+.sev-count { font-size: 28px; font-weight: 800; line-height: 1; }
+.sev-label { font-size: 12px; font-weight: 600; margin-top: 4px; }
+/* ===== BUSINESS IMPACT CARDS ===== */
+.rec-impact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.rec-impact-box { padding: 10px 12px; border-radius: 8px; font-size: 12px; line-height: 1.5; }
+.rec-impact-technical { background: rgba(59,130,246,.06); border: 1px solid rgba(59,130,246,.15); }
+.rec-impact-business  { background: rgba(245,158,11,.06);  border: 1px solid rgba(245,158,11,.15); }
+body.dark .rec-impact-technical { background: rgba(59,130,246,.1); border-color: rgba(59,130,246,.25); }
+body.dark .rec-impact-business  { background: rgba(245,158,11,.1); border-color: rgba(245,158,11,.25); }
+.rec-impact-label { font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; opacity: .7; }
+/* ===== COMPARISON DASHBOARD ===== */
+.ranking-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+body.dark .ranking-row { border-color: var(--border-dark); }
+.ranking-row:last-child { border-bottom: none; }
+.rank-bar-wrap { flex: 1; height: 8px; background: var(--border); border-radius: 99px; overflow: hidden; }
+body.dark .rank-bar-wrap { background: var(--border-dark); }
+/* ===== IMPORTANCE COL BADGE ===== */
+.imp-critical { font-size: 10px; font-weight: 700; color: #dc2626; background: rgba(239,68,68,.1); padding: 2px 6px; border-radius: 4px; }
+.imp-optional  { font-size: 10px; font-weight: 600; color: #059669; background: rgba(16,185,129,.1); padding: 2px 6px; border-radius: 4px; }
+.imp-important { font-size: 10px; color: var(--text-muted); padding: 2px 6px; }
+@media (max-width: 600px) { .severity-grid { grid-template-columns: 1fr 1fr; } .rec-impact-row { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -1176,17 +1209,20 @@ function SingleFileReport({ report }) {
   const [colsExpanded, setColsExpanded] = useState(false);
   if (!report) return null;
 
-  const profile   = report.profile   || {};
-  const overview  = profile.overview || {};
-  const checks    = report.checks    || {};
-  const score     = report.score     || {};
-  const ml        = report.ml_readiness;
-  const recs      = report.recommendations || [];
-  const dists     = report.distributions   || [];
-  const corrMat   = report.correlation_matrix || {};
-  const cols      = profile.columns || [];
-  const suggested = report.suggested_targets || [];
+  const profile    = report.profile   || {};
+  const overview   = profile.overview || {};
+  const checks     = report.checks    || {};
+  const score      = report.score     || {};
+  const ml         = report.ml_readiness;
+  const recs       = report.recommendations || [];
+  const dists      = report.distributions   || [];
+  const corrMat    = report.correlation_matrix || {};
+  const cols       = profile.columns || [];
+  const suggested  = report.suggested_targets || [];
   const targetUsed = report.target_used;
+  const severity   = report.severity || {};
+  const sevCounts  = severity.counts || {};
+  const colImp     = report.col_importance_summary || {};
 
   const missingCols  = (checks.missing  || {}).columns || [];
   const outlierCols  = (checks.outliers || {}).affected_columns || [];
@@ -1201,7 +1237,6 @@ function SingleFileReport({ report }) {
   const totalScore = score.total || 0;
   const grade = score.grade || '—';
 
-  // Download JSON
   const handleDownload = () => {
     const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -1290,6 +1325,67 @@ function SingleFileReport({ report }) {
         ))}
       </div>
 
+      {/* C2. SEVERITY DISTRIBUTION — FIX #7 */}
+      {severity.total > 0 && (
+        <div className="card mb-6">
+          <div className="card-header">
+            <div><div className="card-title">🚦 Issue Severity Distribution</div>
+            <div className="card-subtitle">All detected issues ranked by business impact</div></div>
+            <span className="badge badge-info">{severity.total} total issues</span>
+          </div>
+          <div className="severity-grid">
+            {[
+              { key: 'CRITICAL', label: 'Critical', cls: 'critical', color: '#ef4444', icon: '🔴' },
+              { key: 'HIGH',     label: 'High',     cls: 'high',     color: '#f59e0b', icon: '🟠' },
+              { key: 'MEDIUM',   label: 'Medium',   cls: 'medium',   color: '#3b82f6', icon: '🟡' },
+              { key: 'LOW',      label: 'Low',      cls: 'low',      color: '#10b981', icon: '🟢' },
+            ].map(s => (
+              <div key={s.key} className={`sev-card ${s.cls}`}>
+                <div className="sev-count" style={{ color: s.color }}>{sevCounts[s.key] || 0}</div>
+                <div className="sev-label" style={{ color: s.color }}>{s.icon} {s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* C3. COLUMN IMPORTANCE — FIX #1 */}
+      {(colImp.CRITICAL?.length > 0 || colImp.OPTIONAL?.length > 0) && (
+        <div className="card mb-6">
+          <div className="card-header">
+            <div><div className="card-title">🏷️ Column Importance Classification</div>
+            <div className="card-subtitle">Missing value penalties are weighted by column importance</div></div>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            {colImp.CRITICAL?.length > 0 && (
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: '#dc2626', marginBottom: 6 }}>🔴 CRITICAL — High missing penalty (IDs, keys, target, financial)</div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                  {colImp.CRITICAL.map((c, i) => <span key={i} className="imp-critical">{c}</span>)}
+                </div>
+              </div>
+            )}
+            {colImp.IMPORTANT?.length > 0 && (
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-muted)', marginBottom: 6 }}>🟡 IMPORTANT — Normal penalty</div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                  {colImp.IMPORTANT.slice(0, 12).map((c, i) => <span key={i} className="imp-important">{c}</span>)}
+                  {colImp.IMPORTANT.length > 12 && <span className="imp-important">+{colImp.IMPORTANT.length - 12} more</span>}
+                </div>
+              </div>
+            )}
+            {colImp.OPTIONAL?.length > 0 && (
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 600, color: '#059669', marginBottom: 6 }}>🟢 OPTIONAL — Low penalty (comments, descriptions, free text)</div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                  {colImp.OPTIONAL.map((c, i) => <span key={i} className="imp-optional">{c}</span>)}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* D. SUGGESTED TARGETS */}
       {!targetUsed && suggested.length > 0 && (
         <div className="card mb-6" style={{ border: '1px solid rgba(99,102,241,.3)', background: 'rgba(99,102,241,.04)' }}>
@@ -1343,10 +1439,20 @@ function SingleFileReport({ report }) {
           <Collapsible title={`🔴 Missing Values`} badge={<span className="badge badge-warning">{missingCols.length} cols</span>} defaultOpen={missingCols.length > 0}>
             {missingCols.length === 0 ? <p style={{ fontSize: 13, color: 'var(--text-muted)', padding: '8px 4px' }}>✅ No missing values detected.</p> : (
               <div className="table-wrap">
-                <table><thead><tr><th>Column</th><th>Missing</th><th>%</th><th>Risk</th></tr></thead>
+                <table><thead><tr><th>Column</th><th>Importance</th><th>Missing</th><th>%</th><th>Risk</th></tr></thead>
                 <tbody>
                   {missingCols.map((c, i) => (
-                    <tr key={i}><td style={{ fontWeight: 500 }}>{c.col}</td><td>{c.missing}</td><td>{c.pct}%</td><td><RiskBadge risk={c.risk} /></td></tr>
+                    <tr key={i}>
+                      <td style={{ fontWeight: 500 }}>{c.col}</td>
+                      <td>
+                        {c.importance === 'CRITICAL' && <span className="imp-critical">CRITICAL</span>}
+                        {c.importance === 'OPTIONAL' && <span className="imp-optional">OPTIONAL</span>}
+                        {(!c.importance || c.importance === 'IMPORTANT') && <span className="imp-important">IMPORTANT</span>}
+                      </td>
+                      <td>{c.missing}</td>
+                      <td>{c.pct}%</td>
+                      <td><RiskBadge risk={c.risk} /></td>
+                    </tr>
                   ))}
                 </tbody></table>
               </div>
@@ -1568,11 +1674,12 @@ function SingleFileReport({ report }) {
         </div>
       )}
 
-      {/* J. AI RECOMMENDATIONS */}
+      {/* J. AI RECOMMENDATIONS — context-aware with business impact */}
       {recs.length > 0 && (
         <div className="card mb-6">
           <div className="card-header">
-            <div><div className="card-title">💡 AI Recommendations</div><div className="card-subtitle">{recs.length} actionable suggestions</div></div>
+            <div><div className="card-title">💡 AI Recommendations</div>
+            <div className="card-subtitle">{recs.length} context-aware suggestions with business impact</div></div>
           </div>
           {recs.map((r, i) => (
             <div key={i} className="rec-card">
@@ -1581,15 +1688,37 @@ function SingleFileReport({ report }) {
                   <span style={{ fontSize: 20 }}>{r.icon || '💡'}</span>
                   <span>{r.title}</span>
                 </div>
-                <PriorityBadge priority={r.priority || r.Priority} />
+                <PriorityBadge priority={r.priority} />
               </div>
-              <div className="rec-card-body">
-                {r.problem && <div><b>Problem:</b> {r.problem}</div>}
-                {r.impact  && <div style={{ marginTop: 4 }}><b>Impact:</b> {r.impact}</div>}
-                {(r.fix || r.desc) && (
-                  <div className="rec-fix">{r.fix || r.desc}</div>
-                )}
-              </div>
+              {r.problem && (
+                <div style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 8 }}>
+                  <b style={{ color: 'var(--text)' }}>Problem:</b> {r.problem}
+                </div>
+              )}
+              {r.reason && (
+                <div style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 8 }}>
+                  <b style={{ color: 'var(--text)' }}>Why:</b> {r.reason}
+                </div>
+              )}
+              {(r.technical_impact || r.business_impact) && (
+                <div className="rec-impact-row">
+                  {r.technical_impact && (
+                    <div className="rec-impact-box rec-impact-technical">
+                      <div className="rec-impact-label">⚙️ Technical Impact</div>
+                      {r.technical_impact}
+                    </div>
+                  )}
+                  {r.business_impact && (
+                    <div className="rec-impact-box rec-impact-business">
+                      <div className="rec-impact-label">📊 Business Impact</div>
+                      {r.business_impact}
+                    </div>
+                  )}
+                </div>
+              )}
+              {(r.fix || r.desc) && (
+                <div className="rec-fix">{r.fix || r.desc}</div>
+              )}
             </div>
           ))}
         </div>
